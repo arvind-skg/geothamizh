@@ -11,11 +11,19 @@ import { KnowledgeGraphModal } from './components/KnowledgeGraphModal';
 import { PeopleExplorerModal } from './components/PeopleExplorerModal';
 import { WorksExplorerModal } from './components/WorksExplorerModal';
 import { SplashScreen } from './components/SplashScreen';
+import { SplitScreenMapSlider } from './components/SplitScreenMapSlider';
+import { AudioHeritageGuideModal } from './components/AudioHeritageGuideModal';
+import { ItineraryPlannerModal } from './components/ItineraryPlannerModal';
+import { TodayInHistoryModal } from './components/TodayInHistoryModal';
+import { SocialShareCardModal } from './components/SocialShareCardModal';
 
 import { PLACES } from './data/places';
 import { TIMELINE_PERIODS, PERIODS } from './data/periods';
 import { HISTORICAL_POLITIES } from './data/historicalPolities';
 import { TRADE_ROUTES } from './data/tradeRoutes';
+import { MARITIME_ROUTES } from './data/maritimeRoutes';
+import { CURATED_ITINERARIES } from './data/itineraries';
+import { DAILY_HISTORY } from './data/dailyHistory';
 import { SOURCES } from './data/sources';
 import { LIVING_CULTURE } from './data/livingCulture';
 import { KNOWLEDGE_GRAPH } from './data/knowledgeGraph';
@@ -72,10 +80,28 @@ export default function App() {
   const [isGraphOpen, setIsGraphOpen] = useState(false);
   const [isPeopleOpen, setIsPeopleOpen] = useState(false);
   const [isWorksOpen, setIsWorksOpen] = useState(false);
+  const [isSplitScreenOpen, setIsSplitScreenOpen] = useState(false);
+  const [isAudioGuideOpen, setIsAudioGuideOpen] = useState(false);
+  const [activeAudioPlace, setActiveAudioPlace] = useState(null);
+  const [isItinerariesOpen, setIsItinerariesOpen] = useState(false);
+  const [isTodayHistoryOpen, setIsTodayHistoryOpen] = useState(false);
+  const [isShareCardOpen, setIsShareCardOpen] = useState(false);
+  const [activeSharePlace, setActiveSharePlace] = useState(null);
 
   // Story Trail State
   const [activeStory, setActiveStory] = useState(null);
   const [activeStoryStopIndex, setActiveStoryStopIndex] = useState(0);
+
+  // Handlers for Audio Guide and Share Card
+  const handleOpenAudioGuide = (place) => {
+    setActiveAudioPlace(place || selectedPlace || PLACES[0]);
+    setIsAudioGuideOpen(true);
+  };
+
+  const handleOpenShareCard = (place) => {
+    setActiveSharePlace(place || selectedPlace || PLACES[0]);
+    setIsShareCardOpen(true);
+  };
 
   // User Location State: Initiated on app mount to user's live GPS coordinates
   const [userLocation, setUserLocation] = useState(null);
@@ -282,6 +308,9 @@ export default function App() {
         onOpenStories={() => setIsStoriesOpen(true)}
         onOpenPeople={() => setIsPeopleOpen(true)}
         onOpenWorks={() => setIsWorksOpen(true)}
+        onOpenItineraries={() => setIsItinerariesOpen(true)}
+        onOpenTodayInHistory={() => setIsTodayHistoryOpen(true)}
+        onOpenSplitScreen={() => setIsSplitScreenOpen(true)}
         onDetectLocation={handleDetectLocation}
         isDetectingLocation={isDetectingLocation}
         userLocation={userLocation}
@@ -307,6 +336,8 @@ export default function App() {
           onOpenCurrentLocationHistory={handleOpenCurrentLocationHistory}
           onDetectLocation={handleDetectLocation}
           isDetectingLocation={isDetectingLocation}
+          onOpenSplitScreen={() => setIsSplitScreenOpen(true)}
+          onOpenAudioGuide={handleOpenAudioGuide}
         />
 
         {/* Floating Search & Filter Directory (Active in Live Map Mode) */}
@@ -346,6 +377,8 @@ export default function App() {
         translations={translations}
         sourcesRegistry={SOURCES}
         onOpenAIGuide={() => setIsAIGuideOpen(true)}
+        onOpenAudioGuide={() => handleOpenAudioGuide(connectedHistoryPlace)}
+        onOpenShareCard={() => handleOpenShareCard(connectedHistoryPlace)}
       />
 
       {/* Source-Grounded AI Heritage Guide Drawer */}
@@ -406,6 +439,57 @@ export default function App() {
         onClose={() => setIsWorksOpen(false)}
         works={LITERATURE_WORKS}
         onSelectPlaceById={handleSelectPlaceById}
+        translations={translations}
+      />
+
+      {/* Feature 2: Then vs Now Split-Screen Slider */}
+      <SplitScreenMapSlider
+        isOpen={isSplitScreenOpen}
+        onClose={() => setIsSplitScreenOpen(false)}
+        places={PLACES}
+        polities={HISTORICAL_POLITIES}
+        activePeriodId={activePeriodId}
+        onSelectPlace={handleSelectPlace}
+        translations={translations}
+      />
+
+      {/* Feature 5: Self-Guided Audio Heritage Tour Modal */}
+      <AudioHeritageGuideModal
+        isOpen={isAudioGuideOpen}
+        onClose={() => setIsAudioGuideOpen(false)}
+        place={activeAudioPlace || selectedPlace || PLACES[0]}
+        places={PLACES}
+        onSelectPlace={(p) => {
+          setActiveAudioPlace(p);
+          setSelectedPlace(p);
+        }}
+        translations={translations}
+      />
+
+      {/* Feature 6: Curated 1-Day Heritage Itineraries Modal */}
+      <ItineraryPlannerModal
+        isOpen={isItinerariesOpen}
+        onClose={() => setIsItinerariesOpen(false)}
+        itineraries={CURATED_ITINERARIES}
+        onSelectPlaceById={handleSelectPlaceById}
+        translations={translations}
+      />
+
+      {/* Feature 11: Today in Tamil History Modal */}
+      <TodayInHistoryModal
+        isOpen={isTodayHistoryOpen}
+        onClose={() => setIsTodayHistoryOpen(false)}
+        dailyEntries={DAILY_HISTORY}
+        onSelectPlaceById={handleSelectPlaceById}
+        translations={translations}
+      />
+
+      {/* Feature 13: Shareable Story & Monument Card Modal */}
+      <SocialShareCardModal
+        isOpen={isShareCardOpen}
+        onClose={() => setIsShareCardOpen(false)}
+        place={activeSharePlace || selectedPlace || PLACES[0]}
+        userLocation={userLocation}
         translations={translations}
       />
     </div>

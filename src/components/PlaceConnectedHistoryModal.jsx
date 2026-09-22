@@ -14,7 +14,9 @@ export const PlaceConnectedHistoryModal = ({
   onClose,
   translations,
   sourcesRegistry,
-  onOpenAIGuide
+  onOpenAIGuide,
+  onOpenAudioGuide,
+  onOpenShareCard
 }) => {
   const [activeTab, setActiveTab] = useState('overview');
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
@@ -120,9 +122,59 @@ export const PlaceConnectedHistoryModal = ({
             </div>
           </div>
 
-          <button className="drawer-close-btn" onClick={onClose} aria-label="Close history modal">
-            <X size={18} />
-          </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            {onOpenAudioGuide && (
+              <button
+                type="button"
+                onClick={() => onOpenAudioGuide(place)}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '5px',
+                  padding: '5px 10px',
+                  borderRadius: '999px',
+                  background: 'rgba(212, 149, 43, 0.15)',
+                  border: '1px solid rgba(212, 149, 43, 0.4)',
+                  color: '#ffd166',
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  cursor: 'pointer'
+                }}
+                title="Open Bilingual Audio Heritage Guide"
+              >
+                <Volume2 size={13} />
+                <span>Audio Tour</span>
+              </button>
+            )}
+
+            {onOpenShareCard && (
+              <button
+                type="button"
+                onClick={() => onOpenShareCard(place)}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '5px',
+                  padding: '5px 10px',
+                  borderRadius: '999px',
+                  background: 'rgba(143, 29, 29, 0.25)',
+                  border: '1px solid rgba(143, 29, 29, 0.5)',
+                  color: '#ffccd5',
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  cursor: 'pointer'
+                }}
+                title="Generate 1080x1080 Social Share Card"
+              >
+                <Sparkles size={13} />
+                <span>Share Card</span>
+              </button>
+            )}
+
+            <button className="drawer-close-btn" onClick={onClose} aria-label="Close history modal">
+              <X size={18} />
+            </button>
+          </div>
         </div>
 
         {/* Tab Navigation Strip */}

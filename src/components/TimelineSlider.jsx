@@ -9,27 +9,29 @@ export const TimelineSlider = ({
   currentLanguage
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [playSpeed, setPlaySpeed] = useState(1); // 1x or 2x
   const [isExpanded, setIsExpanded] = useState(true);
 
   // Find index of active period
   const activeIndex = TIMELINE_PERIODS.findIndex(p => p.id === activePeriodId);
   const currentPeriod = TIMELINE_PERIODS[activeIndex] || TIMELINE_PERIODS[0];
 
-  // Auto-play time travel animation
+  // Auto-play time travel animation across empires with adjustable speed
   useEffect(() => {
     let interval = null;
     if (isPlaying) {
+      const delay = playSpeed === 2 ? 1900 : playSpeed === 0.5 ? 5000 : 3200;
       interval = setInterval(() => {
         onPeriodChange(prevId => {
           const idx = TIMELINE_PERIODS.findIndex(p => p.id === prevId);
-          // Loop through periods
+          // Loop through periods in chronological order (pre_sangam -> later)
           const nextIdx = (idx + 1) % TIMELINE_PERIODS.length;
           return TIMELINE_PERIODS[nextIdx].id;
         });
-      }, 3800);
+      }, delay);
     }
     return () => clearInterval(interval);
-  }, [isPlaying, onPeriodChange]);
+  }, [isPlaying, playSpeed, onPeriodChange]);
 
   const handleSliderChange = (e) => {
     const idx = parseInt(e.target.value, 10);
@@ -38,12 +40,18 @@ export const TimelineSlider = ({
     }
   };
 
+  const cycleSpeed = () => {
+    if (playSpeed === 1) setPlaySpeed(2);
+    else if (playSpeed === 2) setPlaySpeed(0.5);
+    else setPlaySpeed(1);
+  };
+
   return (
     <div className={`timeline-slider-card ${isExpanded ? 'expanded' : 'minimized'}`}>
       {/* Top Header Row */}
       <div className="timeline-header-row">
         <div className="timeline-badge-group" onClick={() => setIsExpanded(!isExpanded)} style={{ cursor: 'pointer' }}>
-          <div className="timeline-indicator-glow">
+          <div className="timeline-indicator-glow" style={{ background: isPlaying ? 'linear-gradient(135deg, #8F1D1D, #D4952B)' : undefined }}>
             {currentPeriod.id === 'today' ? <Compass size={14} /> : <Clock size={14} />}
           </div>
           <div>
@@ -52,6 +60,19 @@ export const TimelineSlider = ({
                 {currentPeriod.id === 'today' ? 'Present Reality' : 'Historical Era'}:
               </span>
               <span className="timeline-period-title">{currentPeriod.name}</span>
+              {isPlaying && (
+                <span style={{ 
+                  fontSize: '10px', 
+                  background: 'rgba(143, 29, 29, 0.4)', 
+                  border: '1px solid #d4952b', 
+                  color: '#ffd166', 
+                  padding: '1px 6px', 
+                  borderRadius: '10px',
+                  animation: 'pulse 1.5s infinite' 
+                }}>
+                  Morphing • {playSpeed}x
+                </span>
+              )}
             </div>
             <div className="timeline-period-tamil">
               {currentPeriod.tamilName} • <span style={{ color: '#aaa' }}>{currentPeriod.timeSpan}</span>
@@ -64,11 +85,34 @@ export const TimelineSlider = ({
           <button
             className={`timeline-play-btn ${isPlaying ? 'active' : ''}`}
             onClick={() => setIsPlaying(!isPlaying)}
-            title={isPlaying ? 'Pause Time-Travel' : 'Auto Time-Travel Across Eras'}
+            title={isPlaying ? 'Pause Empire Time-Travel' : 'Auto-Play Empire Morphing across Eras'}
             aria-label="Time travel autoplay"
+            style={{
+              background: isPlaying ? 'linear-gradient(135deg, #8F1D1D, #6B1313)' : undefined,
+              borderColor: isPlaying ? '#d4952b' : undefined
+            }}
           >
             {isPlaying ? <Pause size={13} fill="#ffd166" /> : <Play size={13} fill="#ffd166" style={{ marginLeft: '1px' }} />}
             <span className="play-label">{isPlaying ? 'Pause' : 'Time-Travel'}</span>
+          </button>
+
+          {/* Playback Speed Toggle */}
+          <button
+            className="timeline-speed-btn"
+            onClick={cycleSpeed}
+            title="Cycle Animation Playback Speed (0.5x, 1x, 2x)"
+            style={{
+              background: 'rgba(212, 149, 43, 0.15)',
+              border: '1px solid rgba(212, 149, 43, 0.35)',
+              color: '#ffd166',
+              borderRadius: '6px',
+              padding: '4px 8px',
+              fontSize: '11px',
+              fontWeight: 700,
+              cursor: 'pointer'
+            }}
+          >
+            {playSpeed}x
           </button>
 
           <button

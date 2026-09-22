@@ -3038,6 +3038,638 @@ h1, h2, h3, .heading-serif {
   50% { transform: scale(1.25); opacity: 0.7; }
 }
 
+/* =========================================================================
+   Feature 3: Maritime Chola & Roman Silk Sea Routes Animation
+   ========================================================================= */
+.sailing-ship-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
+.sailing-ship-container {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.sailing-ship-icon {
+  font-size: 26px;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.75));
+  animation: ship-bobbing 3s ease-in-out infinite;
+  display: inline-block;
+  transform-origin: center bottom;
+  z-index: 2;
+}
+
+@keyframes ship-bobbing {
+  0%, 100% { transform: translateY(0px) rotate(-3deg); }
+  50% { transform: translateY(-4px) rotate(4deg); }
+}
+
+.ship-wave-ripple {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(212, 149, 43, 0.7);
+  background: rgba(143, 29, 29, 0.2);
+  animation: wave-expand 2s ease-out infinite;
+  z-index: 1;
+}
+
+@keyframes wave-expand {
+  0% { transform: scale(0.6); opacity: 0.9; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+.maritime-route-label {
+  background: rgba(24, 14, 9, 0.92) !important;
+  border: 1px solid #d4952b !important;
+  color: #ffd166 !important;
+  font-family: var(--font-serif);
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  border-radius: 6px !important;
+  padding: 3px 8px !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(4px);
+}
+
+/* =========================================================================
+   Feature 2: Split-Screen Then vs Now Map Slider
+   ========================================================================= */
+.split-screen-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(10, 6, 4, 0.88);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: modal-fade-in 0.25s ease-out;
+}
+
+.split-screen-modal-card {
+  width: 96vw;
+  max-width: 1400px;
+  height: 90vh;
+  background: #180e09;
+  border: 1.5px solid #d4952b;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(212, 149, 43, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.split-screen-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  background: linear-gradient(90deg, #24140b, #180e09);
+  border-bottom: 1px solid rgba(212, 149, 43, 0.3);
+  z-index: 10;
+}
+
+.split-screen-header-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.split-screen-badge-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8f1d1d, #d4952b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #faf5ec;
+  box-shadow: 0 0 12px rgba(212, 149, 43, 0.4);
+}
+
+.split-screen-canvas-container {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+}
+
+.split-map-pane {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.split-map-historical {
+  left: 0;
+}
+
+.split-map-modern {
+  left: 0;
+}
+
+.split-curtain-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, #d4952b, #faf5ec, #8f1d1d);
+  cursor: ew-resize;
+  z-index: 500;
+  box-shadow: 0 0 16px rgba(212, 149, 43, 0.8);
+}
+
+.split-curtain-handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8f1d1d, #d4952b);
+  border: 2px solid #faf5ec;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.7), 0 0 15px rgba(212, 149, 43, 0.8);
+  font-size: 16px;
+  transition: transform 0.15s ease;
+}
+
+.split-curtain-handle:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.split-banner-left {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(24, 14, 9, 0.85);
+  border: 1px solid #d4952b;
+  border-radius: 8px;
+  padding: 0.4rem 0.85rem;
+  color: #ffd166;
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  font-weight: 700;
+  z-index: 400;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.split-banner-right {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(14, 28, 38, 0.85);
+  border: 1px solid #09bc8a;
+  border-radius: 8px;
+  padding: 0.4rem 0.85rem;
+  color: #80ed99;
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  font-weight: 700;
+  z-index: 400;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* =========================================================================
+   Feature 5: Self-Guided Audio Heritage Tour Modal
+   ========================================================================= */
+.audio-guide-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(12, 7, 5, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: modal-fade-in 0.25s ease-out;
+}
+
+.audio-guide-card {
+  width: 95vw;
+  max-width: 680px;
+  max-height: 90vh;
+  background: linear-gradient(175deg, #24140b, #150c07);
+  border: 1.5px solid #d4952b;
+  border-radius: 18px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85), 0 0 30px rgba(212, 149, 43, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #faf5ec;
+}
+
+.audio-place-hero {
+  position: relative;
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.25rem;
+}
+
+.audio-place-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(24, 14, 9, 0.95) 15%, rgba(24, 14, 9, 0.35) 80%, rgba(0, 0, 0, 0.7));
+}
+
+.audio-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.audio-waveform-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 36px;
+  margin: 0.85rem 0;
+}
+
+.audio-waveform-line {
+  width: 4px;
+  background: linear-gradient(to top, #8f1d1d, #d4952b);
+  border-radius: 2px;
+  transition: height 0.15s ease;
+}
+
+.audio-waveform-line.is-active {
+  animation: waveform-jump 0.9s ease-in-out infinite alternate;
+}
+
+@keyframes waveform-jump {
+  0% { height: 6px; }
+  100% { height: 32px; }
+}
+
+.audio-controls-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 1rem 1.5rem;
+  background: rgba(18, 10, 6, 0.7);
+  border-top: 1px solid rgba(212, 149, 43, 0.2);
+  border-bottom: 1px solid rgba(212, 149, 43, 0.2);
+}
+
+.audio-main-play-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8f1d1d, #d4952b);
+  border: 2px solid #ffd166;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(143, 29, 29, 0.6), 0 0 20px rgba(212, 149, 43, 0.4);
+  transition: all 0.2s ease;
+}
+
+.audio-main-play-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 24px rgba(143, 29, 29, 0.8), 0 0 25px rgba(212, 149, 43, 0.6);
+}
+
+.audio-secondary-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(212, 149, 43, 0.15);
+  border: 1px solid rgba(212, 149, 43, 0.35);
+  color: #ffd166;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.audio-secondary-btn:hover {
+  background: rgba(212, 149, 43, 0.3);
+  color: #fff;
+}
+
+.audio-speed-badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(212, 149, 43, 0.18);
+  border: 1px solid rgba(212, 149, 43, 0.4);
+  color: #ffd166;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.audio-transcript-card {
+  padding: 1.25rem;
+  overflow-y: auto;
+  max-height: 220px;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: #e6dfd5;
+  background: rgba(14, 8, 5, 0.5);
+  border-radius: 10px;
+  margin: 1rem 1.25rem;
+  border: 1px solid rgba(212, 149, 43, 0.15);
+}
+
+/* =========================================================================
+   Feature 6: Curated 1-Day Heritage Itineraries Modal
+   ========================================================================= */
+.itinerary-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(10, 6, 4, 0.88);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: modal-fade-in 0.25s ease-out;
+}
+
+.itinerary-modal-card {
+  width: 95vw;
+  max-width: 980px;
+  max-height: 90vh;
+  background: #180e09;
+  border: 1.5px solid #d4952b;
+  border-radius: 18px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85), 0 0 35px rgba(212, 149, 43, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #faf5ec;
+}
+
+.itinerary-selector-strip {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: rgba(24, 14, 9, 0.95);
+  border-bottom: 1px solid rgba(212, 149, 43, 0.25);
+  overflow-x: auto;
+}
+
+.itinerary-pill-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(212, 149, 43, 0.1);
+  border: 1px solid rgba(212, 149, 43, 0.3);
+  color: #e5ded5;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.itinerary-pill-btn.active {
+  background: linear-gradient(135deg, #8f1d1d, #d4952b);
+  border-color: #ffd166;
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(143, 29, 29, 0.5);
+}
+
+.itinerary-body-scroll {
+  padding: 1.25rem;
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.itinerary-stop-row {
+  display: flex;
+  gap: 1rem;
+  position: relative;
+}
+
+.itinerary-time-pillar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 75px;
+}
+
+.itinerary-time-badge {
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(212, 149, 43, 0.18);
+  border: 1px solid #d4952b;
+  color: #ffd166;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.itinerary-pillar-line {
+  width: 2px;
+  flex: 1;
+  background: rgba(212, 149, 43, 0.25);
+  margin-top: 6px;
+}
+
+.itinerary-stop-card {
+  flex: 1;
+  background: rgba(24, 14, 9, 0.7);
+  border: 1px solid rgba(212, 149, 43, 0.25);
+  border-radius: 12px;
+  padding: 1rem;
+  transition: all 0.2s ease;
+}
+
+.itinerary-stop-card:hover {
+  border-color: #d4952b;
+  background: rgba(36, 20, 11, 0.85);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+}
+
+/* =========================================================================
+   Feature 11: Today in Tamil History Daily Capsule Modal
+   ========================================================================= */
+.today-history-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(10, 6, 4, 0.88);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: modal-fade-in 0.25s ease-out;
+}
+
+.today-history-modal-card {
+  width: 95vw;
+  max-width: 780px;
+  max-height: 90vh;
+  background: #180e09;
+  border: 1.5px solid #d4952b;
+  border-radius: 18px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85), 0 0 35px rgba(212, 149, 43, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #faf5ec;
+}
+
+.today-date-header-card {
+  background: linear-gradient(135deg, #2a150b, #180e09);
+  border-bottom: 1px solid rgba(212, 149, 43, 0.3);
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.today-epigraph-box {
+  background: rgba(212, 149, 43, 0.08);
+  border-left: 3px solid #d4952b;
+  padding: 0.85rem 1rem;
+  border-radius: 0 8px 8px 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: #ffd166;
+  margin: 0.75rem 0;
+}
+
+/* =========================================================================
+   Feature 13: Shareable Monument & Story Card Modal
+   ========================================================================= */
+.social-share-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(10, 6, 4, 0.9);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: modal-fade-in 0.25s ease-out;
+}
+
+.social-share-card-container {
+  width: 95vw;
+  max-width: 620px;
+  max-height: 94vh;
+  background: #180e09;
+  border: 1.5px solid #d4952b;
+  border-radius: 20px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 40px rgba(212, 149, 43, 0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #faf5ec;
+}
+
+.social-share-canvas-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: #0f0704;
+}
+
+.social-share-canvas-preview {
+  max-width: 100%;
+  max-height: 52vh;
+  border-radius: 12px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(212, 149, 43, 0.4);
+}
+
+.social-share-button-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: #180e09;
+  border-top: 1px solid rgba(212, 149, 43, 0.2);
+}
+
+.social-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #8f1d1d, #d4952b);
+  border: 1.5px solid #ffd166;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(143, 29, 29, 0.5);
+  transition: all 0.2s ease;
+}
+
+.social-download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(143, 29, 29, 0.7);
+}
+
+.social-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.1rem;
+  border-radius: 999px;
+  background: rgba(212, 149, 43, 0.15);
+  border: 1.5px solid rgba(212, 149, 43, 0.4);
+  color: #ffd166;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.social-copy-btn:hover {
+  background: rgba(212, 149, 43, 0.3);
+  color: #fff;
+}
+
 
 
 

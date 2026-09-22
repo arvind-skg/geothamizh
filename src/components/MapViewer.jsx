@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
-import { Crosshair, Loader2, Navigation, Layers, Eye, EyeOff, ZoomIn, Sparkles } from 'lucide-react';
+import { Crosshair, Loader2, Navigation, Layers, Eye, EyeOff, ZoomIn, Sparkles, Volume2, MoveHorizontal, Anchor } from 'lucide-react';
 import { HISTORICAL_CITIES } from '../data/historicalPolities';
+import { MARITIME_ROUTES } from '../data/maritimeRoutes';
 
 export const MapViewer = ({
   places,
@@ -16,16 +17,22 @@ export const MapViewer = ({
   activeStoryStopIndex,
   onOpenCurrentLocationHistory,
   onDetectLocation,
-  isDetectingLocation
+  isDetectingLocation,
+  onOpenSplitScreen,
+  onOpenAudioGuide
 }) => {
   const mapContainerRef = useRef(null);
   const mapInstanceRef = useRef(null);
   const markersLayerRef = useRef(null);
   const politiesLayerRef = useRef(null);
   const tradeRoutesLayerRef = useRef(null);
+  const maritimeRoutesLayerRef = useRef(null);
   const storyRouteLayerRef = useRef(null);
   const userLocationLayerRef = useRef(null);
   const currentTileLayerRef = useRef(null);
+
+  // Maritime Routes display toggle
+  const [showMaritimeRoutes, setShowMaritimeRoutes] = useState(true);
 
   // Selected dynasty polity card (matching reference image top-left card)
   const [selectedPolity, setSelectedPolity] = useState(null);
@@ -87,6 +94,7 @@ export const MapViewer = ({
     markersLayerRef.current = L.layerGroup().addTo(map);
     politiesLayerRef.current = L.layerGroup().addTo(map);
     tradeRoutesLayerRef.current = L.layerGroup().addTo(map);
+    maritimeRoutesLayerRef.current = L.layerGroup().addTo(map);
     storyRouteLayerRef.current = L.layerGroup().addTo(map);
     userLocationLayerRef.current = L.layerGroup().addTo(map);
 
@@ -465,6 +473,87 @@ export const MapViewer = ({
     }
   }, [isHistorical, tradeRoutes, activePeriodId]);
 
+  // Render Oceanic Maritime Trade & Naval Routes with Animated Sailing Vessels
+  useEffect(() => {
+    const map = mapInstanceRef.current;
+    if (!map || !maritimeRoutesLayerRef.current) return;
+
+    maritimeRoutesLayerRef.current.clearLayers();
+
+    if (isHistorical && showMaritimeRoutes) {
+      MARITIME_ROUTES.forEach(route => {
+        // Glowing dashed oceanic vector
+        const polyline = L.polyline(route.pathCoordinates, {
+          color: route.color,
+          weight: 3.5,
+          dashArray: '8, 8',
+          opacity: 0.85,
+          className: 'maritime-trade-vector'
+        });
+
+        polyline.bindTooltip(`
+          <div style="padding: 6px 8px; font-family: 'Outfit', sans-serif;">
+            <b style="color: ${route.color}; font-size: 13px; display: block; margin-bottom: 2px;">⚓ ${route.name}</b>
+            <div style="font-family: 'Noto Sans Tamil'; font-size: 11.5px; color: #ffd166;">${route.tamilName} (${route.period})</div>
+            <div style="font-size: 11px; color: #eee; margin-top: 4px; line-height: 1.35;">${route.description}</div>
+            <div style="font-size: 10.5px; color: #95d5b2; margin-top: 4px;">Cargo: <b>${route.commodities.join(', ')}</b></div>
+          </div>
+        `, { sticky: true });
+
+        maritimeRoutesLayerRef.current.addLayer(polyline);
+
+        // Animated Sailing Ship Icon at Oceanic Midpoint
+        const midIdx = Math.floor(route.pathCoordinates.length / 2);
+        const midCoord = route.pathCoordinates[midIdx];
+
+        if (midCoord) {
+          const shipIcon = L.divIcon({
+            className: 'sailing-ship-div-icon',
+            iconSize: [36, 36],
+            iconAnchor: [18, 18],
+            html: `
+              <div class="sailing-ship-container">
+                <span class="ship-sail-icon">⛵</span>
+                <span class="ship-wave-ripple"></span>
+              </div>
+            `
+          });
+
+          const shipMarker = L.marker(midCoord, { icon: shipIcon, zIndexOffset: 300 });
+          shipMarker.bindTooltip(`
+            <div style="padding: 4px 6px; font-family: 'Outfit', sans-serif;">
+              <b style="color: #ffd166;">${route.flagship}</b>
+              <div style="font-size: 11px; color: #fff;">Voyage: ${route.name}</div>
+              <div style="font-size: 10px; color: #95d5b2;">Cargo: ${route.commodities.slice(0, 3).join(', ')}</div>
+            </div>
+          `, { direction: 'top', offset: [0, -12] });
+
+          maritimeRoutesLayerRef.current.addLayer(shipMarker);
+        }
+
+        // Port Stops
+        route.stops.forEach(stop => {
+          const portMarker = L.circleMarker(stop.coords, {
+            radius: 5.5,
+            color: route.color,
+            fillColor: '#ffd166',
+            fillOpacity: 1,
+            weight: 2
+          });
+
+          portMarker.bindTooltip(`
+            <div style="font-family: 'Outfit', sans-serif;">
+              <b style="color: #ffd166;">⚓ ${stop.name}</b>
+              <div style="font-size: 10.5px; color: #eee;">${stop.role}</div>
+            </div>
+          `);
+
+          maritimeRoutesLayerRef.current.addLayer(portMarker);
+        });
+      });
+    }
+  }, [isHistorical, showMaritimeRoutes, activePeriodId]);
+
   // Render Active Guided Story Trail
   useEffect(() => {
     const map = mapInstanceRef.current;
@@ -611,6 +700,54 @@ export const MapViewer = ({
           <span style={{ color: '#888' }}>•</span>
           <span style={{ color: '#ffd166' }}>{lodTierDescription}</span>
         </div>
+
+        {/* Then vs Now Split Screen Button */}
+        <button
+          onClick={onOpenSplitScreen}
+          style={{
+            background: 'linear-gradient(135deg, rgba(143, 29, 29, 0.35), rgba(212, 149, 43, 0.25))',
+            border: '1.2px solid rgba(212, 149, 43, 0.65)',
+            color: '#ffd166',
+            borderRadius: '12px',
+            padding: '2px 9px',
+            fontSize: '10.5px',
+            fontWeight: 700,
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '4px',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.35)',
+            transition: 'all 0.2s ease'
+          }}
+          title="Compare Ancient Atlas vs Modern World in Split-Screen"
+        >
+          <MoveHorizontal size={11} color="#ffd166" />
+          <span>Then vs Now</span>
+        </button>
+
+        {isHistorical && (
+          <button
+            onClick={() => setShowMaritimeRoutes(!showMaritimeRoutes)}
+            style={{
+              background: showMaritimeRoutes ? 'rgba(212, 149, 43, 0.25)' : 'rgba(255, 255, 255, 0.05)',
+              border: '1px solid',
+              borderColor: showMaritimeRoutes ? 'rgba(212, 149, 43, 0.65)' : 'rgba(255, 255, 255, 0.2)',
+              color: showMaritimeRoutes ? '#ffd166' : '#aaa',
+              borderRadius: '12px',
+              padding: '2px 8px',
+              fontSize: '10.5px',
+              fontWeight: 600,
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
+              transition: 'all 0.2s ease'
+            }}
+            title="Toggle Chola & Roman Maritime Silk Routes with Animated Ships"
+          >
+            <span>⛵ Maritime: {showMaritimeRoutes ? 'ON' : 'OFF'}</span>
+          </button>
+        )}
 
         {isHistorical && (
           <button

@@ -21,7 +21,10 @@ export const Navbar = ({
   userLocation,
   onOpenCurrentLocationHistory,
   mapMode = 'live',
-  setMapMode
+  setMapMode,
+  onOpenItineraries,
+  onOpenTodayInHistory,
+  onOpenSplitScreen
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -36,12 +39,8 @@ export const Navbar = ({
           <img src="/logo.png" alt="GeoThamizh Logo" className="brand-logo-img" />
         </div>
         <div className="brand-title-wrap">
-          <div className="brand-name">
-            Geo<span>Thamizh</span>
-          </div>
-          <div className="brand-tagline">
-            {translations.tagline}
-          </div>
+          <h1 className="brand-title">GeoThamizh</h1>
+          <span className="brand-subtitle">Rooted in Time. Alive in Stories.</span>
         </div>
       </div>
 
@@ -81,6 +80,24 @@ export const Navbar = ({
 
       {/* Desktop Navigation Links */}
       <nav className="nav-links">
+        <button 
+          className="nav-link-btn"
+          onClick={onOpenItineraries}
+          title="Curated 1-Day Heritage Itineraries"
+        >
+          <span style={{ fontSize: '13px' }}>🧭</span>
+          <span>Itineraries</span>
+        </button>
+
+        <button 
+          className="nav-link-btn"
+          onClick={onOpenTodayInHistory}
+          title="Today in Tamil History — Daily Historical Capsule"
+        >
+          <span style={{ fontSize: '13px' }}>📅</span>
+          <span>Today in History</span>
+        </button>
+
         <button 
           className={`nav-link-btn ${activeTab === 'people' ? 'active' : ''}`}
           onClick={onOpenPeople}
@@ -126,6 +143,19 @@ export const Navbar = ({
 
       {/* Global Controls */}
       <div className="nav-actions">
+        {/* Split Screen Button */}
+        {onOpenSplitScreen && (
+          <button 
+            className="btn-ai-guide"
+            onClick={onOpenSplitScreen}
+            title="Split Screen Map View"
+            aria-label="Split Screen Map View"
+          >
+            <span style={{ fontSize: '14px' }}>🪞</span>
+            <span className="nav-btn-text">Split View</span>
+          </button>
+        )}
+
         {/* AI Heritage Guide Button */}
         <button 
           className="btn-ai-guide"
