@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { 
   Navigation, BookOpen, Utensils, Share2, Sparkles, 
-  Globe, Menu, X, Loader2, MapPin, History 
+  Globe, Menu, X, Loader2, MapPin, History, ChevronDown 
 } from 'lucide-react';
 
 export const Navbar = ({
@@ -27,6 +27,7 @@ export const Navbar = ({
   onOpenSplitScreen
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [moreMenuOpen, setMoreMenuOpen] = useState(false);
 
   return (
     <header className="navbar">
@@ -34,12 +35,13 @@ export const Navbar = ({
       <div 
         className="brand-section"
         onClick={() => setActiveTab('explore')}
+        title="GeoThamizh — Click to return to explore map"
       >
         <div className="brand-logo-frame">
           <img src="/logo.png" alt="GeoThamizh Logo" className="brand-logo-img" />
         </div>
         <div className="brand-title-wrap">
-          <h1 className="brand-title">GeoThamizh</h1>
+          <h1 className="brand-title">Geo<span>Thamizh</span></h1>
           <span className="brand-subtitle">Rooted in Time. Alive in Stories.</span>
         </div>
       </div>
@@ -85,7 +87,7 @@ export const Navbar = ({
           onClick={onOpenItineraries}
           title="Curated 1-Day Heritage Itineraries"
         >
-          <span style={{ fontSize: '13px' }}>🧭</span>
+          <span className="nav-link-icon">🧭</span>
           <span>Itineraries</span>
         </button>
 
@@ -94,7 +96,7 @@ export const Navbar = ({
           onClick={onOpenTodayInHistory}
           title="Today in Tamil History — Daily Historical Capsule"
         >
-          <span style={{ fontSize: '13px' }}>📅</span>
+          <span className="nav-link-icon">📅</span>
           <span>Today in History</span>
         </button>
 
@@ -103,8 +105,8 @@ export const Navbar = ({
           onClick={onOpenPeople}
           title="Explore Historical Figures, Monarchs & Poets"
         >
-          <span style={{ fontSize: '12px' }}>👑</span>
-          <span>{translations.navPeople || 'People'}</span>
+          <span className="nav-link-icon">👑</span>
+          <span>People</span>
         </button>
 
         <button 
@@ -112,58 +114,99 @@ export const Navbar = ({
           onClick={onOpenWorks}
           title="Explore Classical Tamil Literature, Epics & Treatises"
         >
-          <span style={{ fontSize: '12px' }}>📜</span>
-          <span>{translations.navWorks || 'Literature'}</span>
+          <span className="nav-link-icon">📜</span>
+          <span>Literature</span>
         </button>
 
-        <button 
-          className={`nav-link-btn ${activeTab === 'stories' ? 'active' : ''}`}
-          onClick={onOpenStories}
-        >
-          <BookOpen size={14} />
-          <span>{translations.navStories}</span>
-        </button>
+        {/* More Heritage Explorers Dropdown */}
+        <div className="nav-more-container">
+          <button 
+            type="button"
+            className={`nav-link-btn nav-more-trigger ${['stories', 'culture', 'graph'].includes(activeTab) || moreMenuOpen ? 'active' : ''}`}
+            onClick={() => setMoreMenuOpen(!moreMenuOpen)}
+            title="Explore Story Trails, Living Culture & Knowledge Graph"
+          >
+            <span>Explore More</span>
+            <ChevronDown size={13} className={`more-chevron ${moreMenuOpen ? 'is-open' : ''}`} />
+          </button>
 
-        <button 
-          className={`nav-link-btn ${activeTab === 'culture' ? 'active' : ''}`}
-          onClick={onOpenLivingCulture}
-        >
-          <Utensils size={14} />
-          <span>{translations.navCulture}</span>
-        </button>
+          {moreMenuOpen && (
+            <>
+              <div 
+                className="nav-more-backdrop" 
+                onClick={() => setMoreMenuOpen(false)} 
+              />
+              <div className="nav-more-menu">
+                <button 
+                  className={`nav-more-item ${activeTab === 'stories' ? 'active' : ''}`}
+                  onClick={() => {
+                    onOpenStories();
+                    setMoreMenuOpen(false);
+                  }}
+                >
+                  <BookOpen size={15} color="#d4952b" />
+                  <div className="nav-more-text">
+                    <span className="nav-more-title">{translations.navStories || 'Story Trails'}</span>
+                    <span className="nav-more-desc">Curated journeys across eras</span>
+                  </div>
+                </button>
 
-        <button 
-          className={`nav-link-btn ${activeTab === 'graph' ? 'active' : ''}`}
-          onClick={onOpenKnowledgeGraph}
-        >
-          <Share2 size={14} />
-          <span>{translations.navGraph}</span>
-        </button>
+                <button 
+                  className={`nav-more-item ${activeTab === 'culture' ? 'active' : ''}`}
+                  onClick={() => {
+                    onOpenLivingCulture();
+                    setMoreMenuOpen(false);
+                  }}
+                >
+                  <Utensils size={15} color="#ffd166" />
+                  <div className="nav-more-text">
+                    <span className="nav-more-title">{translations.navCulture || 'Living Culture'}</span>
+                    <span className="nav-more-desc">GI crafts, food & rituals</span>
+                  </div>
+                </button>
+
+                <button 
+                  className={`nav-more-item ${activeTab === 'graph' ? 'active' : ''}`}
+                  onClick={() => {
+                    onOpenKnowledgeGraph();
+                    setMoreMenuOpen(false);
+                  }}
+                >
+                  <Share2 size={15} color="#13c2c2" />
+                  <div className="nav-more-text">
+                    <span className="nav-more-title">{translations.navGraph || 'Knowledge Graph'}</span>
+                    <span className="nav-more-desc">Connected network of history</span>
+                  </div>
+                </button>
+              </div>
+            </>
+          )}
+        </div>
       </nav>
 
-      {/* Global Controls */}
+      {/* Global Actions */}
       <div className="nav-actions">
         {/* Split Screen Button */}
         {onOpenSplitScreen && (
           <button 
-            className="btn-ai-guide"
+            className="btn-nav-action btn-split-view"
             onClick={onOpenSplitScreen}
-            title="Split Screen Map View"
+            title="Split Screen Map View (Then vs Now)"
             aria-label="Split Screen Map View"
           >
-            <span style={{ fontSize: '14px' }}>🪞</span>
+            <span style={{ fontSize: '13px' }}>🪞</span>
             <span className="nav-btn-text">Split View</span>
           </button>
         )}
 
         {/* AI Heritage Guide Button */}
         <button 
-          className="btn-ai-guide"
+          className="btn-nav-action btn-ai-guide"
           onClick={onOpenAIGuide}
           title={translations.askAI}
           aria-label="Open AI Heritage Guide"
         >
-          <Sparkles size={14} />
+          <Sparkles size={13} />
           <span className="nav-btn-text">{translations.askAI}</span>
         </button>
 
@@ -268,6 +311,53 @@ export const Navbar = ({
             </div>
 
             <div className="mobile-nav-list">
+              {/* Feature 6: Curated Itineraries in Mobile */}
+              <button 
+                className="mobile-nav-item"
+                onClick={() => {
+                  if (onOpenItineraries) onOpenItineraries();
+                  setMobileMenuOpen(false);
+                }}
+              >
+                <span style={{ fontSize: '16px' }}>🧭</span>
+                <div style={{ textAlign: 'left' }}>
+                  <div style={{ fontWeight: 600, color: '#fff' }}>1-Day Curated Itineraries</div>
+                  <div style={{ fontSize: '10.5px', color: '#aaa' }}>Chola temples, Vaigai & Pallava circuits</div>
+                </div>
+              </button>
+
+              {/* Feature 11: Today in Tamil History in Mobile */}
+              <button 
+                className="mobile-nav-item"
+                onClick={() => {
+                  if (onOpenTodayInHistory) onOpenTodayInHistory();
+                  setMobileMenuOpen(false);
+                }}
+              >
+                <span style={{ fontSize: '16px' }}>📅</span>
+                <div style={{ textAlign: 'left' }}>
+                  <div style={{ fontWeight: 600, color: '#ffd166' }}>Today in Tamil History</div>
+                  <div style={{ fontSize: '10.5px', color: '#aaa' }}>Daily epigraphs & royal charters</div>
+                </div>
+              </button>
+
+              {/* Feature 2: Split-Screen in Mobile */}
+              {onOpenSplitScreen && (
+                <button 
+                  className="mobile-nav-item"
+                  onClick={() => {
+                    onOpenSplitScreen();
+                    setMobileMenuOpen(false);
+                  }}
+                >
+                  <span style={{ fontSize: '16px' }}>🪞</span>
+                  <div style={{ textAlign: 'left' }}>
+                    <div style={{ fontWeight: 600, color: '#fff' }}>Then vs Now Split View</div>
+                    <div style={{ fontSize: '10.5px', color: '#aaa' }}>Ancient atlas vs modern map slider</div>
+                  </div>
+                </button>
+              )}
+
               <button 
                 className="mobile-nav-item"
                 onClick={() => {
@@ -292,7 +382,7 @@ export const Navbar = ({
                 <span style={{ fontSize: '16px' }}>📜</span>
                 <div style={{ textAlign: 'left' }}>
                   <div style={{ fontWeight: 600, color: '#fff' }}>{translations.navWorks || 'Classical Literature'}</div>
-                  <div style={{ fontSize: '10.5px', color: '#aaa' }}>Sangam anthologies, epics & treaties</div>
+                  <div style={{ fontSize: '10.5px', color: '#aaa' }}>Sangam anthologies, epics & treatises</div>
                 </div>
               </button>
 
@@ -303,7 +393,7 @@ export const Navbar = ({
                   setMobileMenuOpen(false);
                 }}
               >
-                <BookOpen size={16} color="#d4a359" />
+                <BookOpen size={16} color="#d4952b" />
                 <div style={{ textAlign: 'left' }}>
                   <div style={{ fontWeight: 600, color: '#fff' }}>{translations.navStories}</div>
                   <div style={{ fontSize: '10.5px', color: '#aaa' }}>Curated journeys & historical trails</div>
