@@ -33,68 +33,68 @@ Every monument, trade corridor, and maritime route is anchored to verified epigr
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-### 🗺️ 1. Antique Cartography & Custom Shaders
+###  1. Antique Cartography & Custom Shaders
 - **Antique Parchment Tile Shader**: Custom post-processing CSS filter applied over OpenStreetMap raster tiles, evoking 17th-century cartographic paper while keeping street details readable.
 - **Dynastic Spheres of Influence**: Dynamic vector polygons depicting historical territorial boundaries:
-  - 🐯 **Chola Realm** (Tiger Banner · Crimson-Gold)
-  - 🐟 **Pandya Realm** (Twin Carp Banner · Deep Amber)
-  - 🏹 **Chera Realm** (Bow & Arrow Banner · Forest Emerald)
-  - 🐂 **Pallava Realm** (Nandi Banner · Indigo)
-  - 🐗 **Vijayanagara Realm** (Varaha Banner · Bronze)
+  -  **Chola Realm** (Tiger Banner · Crimson-Gold)
+  -  **Pandya Realm** (Twin Carp Banner · Deep Amber)
+  -  **Chera Realm** (Bow & Arrow Banner · Forest Emerald)
+  -  **Pallava Realm** (Nandi Banner · Indigo)
+  -  **Vijayanagara Realm** (Varaha Banner · Bronze)
 - **Monsoon & Silk Corridors**: Animated maritime tracks crossing the Indian Ocean and Bay of Bengal alongside Indo-Roman overland trade corridors (connecting Muziris, Arikamedu, and Alagankulam to Alexandria and Rome).
 
-### ⏳ 2. Time-Travel Chrono-Slider & Auto-Play
+###  2. Time-Travel Chrono-Slider & Auto-Play
 - **6 Historical Eras**: Smoothly jump across pre-Sangam antiquity, Sangam age, Post-Sangam era, Medieval Golden Age, Colonial epoch, and modern Tamil Nadu.
 - **Auto Time-Travel**: Automated historical slideshow mode advancing eras sequentially every 3.8 seconds with synchronized boundary animations and marker transitions.
 
-### 📍 3. Live GPS Stratigraphy ("What Happened Where I Stand?")
+###  3. Live GPS Stratigraphy ("What Happened Where I Stand?")
 - **Hardware Geolocation**: Reads user coordinates with high-accuracy HTML5 Geolocation.
 - **Haversine Proximity Matcher**: Computes real-time distance to 28+ heritage sites and historical capitals.
 - **Reverse Geocoding**: Resolves nearby coordinates via OpenStreetMap Nominatim with a 3-second resilient timeout.
 - **Contextual Proximity Alerts**: Even when standing in modern residential districts, GeoThamizh identifies the ancient polity sphere and recommends nearest heritage landmarks.
 
-### 🪟 4. Split-Screen Map Slider (Then vs. Now)
+###  4. Split-Screen Map Slider (Then vs. Now)
 - Interactive side-by-side split screen with an draggable divider.
 - Compare ancient dynastic territories and river courses against modern infrastructure, district boundaries, and satellite views.
 
-### 🔍 5. Level of Detail (LOD) & Decluttering
+###  5. Level of Detail (LOD) & Decluttering
 - **Macro Zoom (< 8.0)**: Imperial capitals (Thanjavur, Madurai, Uraiyur, Poompuhar) and prime maritime emporiums.
 - **Regional Zoom (8.0 – 10.5)**: Historic temple cities, hillforts, and defense citadels.
 - **Micro Zoom (> 10.5)**: Excavation trenches (Keeladi, Adichanallur, Mayiladumparai) and rock-cut caverns.
 - Includes a manual **LOD Override Toggle** for uninterrupted site visibility.
 
-### 🤖 6. AI Heritage Guide (Multi-Entity RAG)
+###  6. AI Heritage Guide (Multi-Entity RAG)
 - Powered by high-speed **Groq (gpt-oss-120b / LLaMA)** and **Google Gemini 1.5 Flash**.
 - **Multi-Entity In-Memory RAG**: Indexes monuments, monarchs, classical anthologies, and epigraphical corpus.
-- **"📍 Show on Map" Action Badges**: Dynamically identifies places within AI answers and renders interactive jump-to-map buttons.
+- **" Show on Map" Action Badges**: Dynamically identifies places within AI answers and renders interactive jump-to-map buttons.
 - **Domain Guard & Fallback**: Rebuffs out-of-domain queries and provides curated museum-grade answers even without an API key or internet connectivity.
 
-### 🎙️ 7. Spoken Voice Narration (Web Speech API)
+###  7. Spoken Voice Narration (Web Speech API)
 - 30–60 second immersive voice tours for every monument and historical narrative.
 - **Robust State Machine**: Native support for **Play**, **Pause**, **Resume**, and **Stop**.
 - **Locale Voice Sensing**: Automatically detects native Tamil voices (`ta-IN`, `ta-LK`) for Tamil script and clear English voices for multilingual descriptions.
 - **Live Soundwave Equalizer**: Dynamic oscillating visualizer in sync with audio state.
 - **Multi-Speed Playback**: Seamlessly toggle between `0.8x`, `1.0x`, and `1.2x`.
 
-### 📚 8. Spatial Biographies & Classical Literature
+###  8. Spatial Biographies & Classical Literature
 - **People Explorer**: Detailed timelines and territorial domains of emperors, warrior queens, and Sangam poets (Rajaraja I, Avvaiyar, Kapilar, Thiruvalluvar, Mangammal).
 - **Literature Explorer**: Direct spatial connections from texts like *Silappadikaram*, *Manimekalai*, *Tolkappiyam*, and *Purananuru* to geographic sites.
 
-### 🧵 9. Living Culture & GI-Tagged Crafts
+###  9. Living Culture & GI-Tagged Crafts
 - Deep dives into living traditions: Thanjavur Art Plates, Swamimalai Bronze casting, Kanchipuram Silk weaving, Pattamadai mats, Chettinad architecture, and ancient culinary traditions.
 
-### 🕸️ 10. Interactive Knowledge Graph
+###  10. Interactive Knowledge Graph
 - Time-aware node-link semantic network connecting monarchs, dynasties, battles, architectural monuments, and inscriptions.
 
-### 🧳 11. Heritage Chronicles & Tourist Safety (SOS)
+###  11. Heritage Chronicles & Tourist Safety (SOS)
 - **Curated Itineraries**: Day-by-day expedition plans (Chola Heartland Circuit, Sangam Maritime Trail, Pandya Rock-Cut Journey).
 - **Today in History**: Daily chronicle engine celebrating historical milestones, epigraphical discoveries, and cultural anniversaries.
 - **Tourist SOS Hub**: Emergency contacts, tourist police, medical aid, 24/7 National Tourist Helpline (1363), and embassy directories.
 - **Social Share Cards**: Export aesthetic, museum-branded shareable graphic cards with coordinates, quotes, and historical milestones.
 
-### 🌐 12. Multilingual Support
+###  12. Multilingual Support
 Full UI and descriptive content localized in 5 languages:
 - 🇬🇧 English (`en`)
 - 🇮🇳 தமிழ் (`ta`)
@@ -104,7 +104,7 @@ Full UI and descriptive content localized in 5 languages:
 
 ---
 
-## 🏛️ Architecture & Data Flow
+##  Architecture & Data Flow
 
 ```mermaid
 graph TD
@@ -142,7 +142,7 @@ graph TD
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```text
 geo-tamizh/
@@ -202,7 +202,7 @@ geo-tamizh/
 
 ---
 
-## 🚀 Quickstart & Installation
+##  Quickstart & Installation
 
 ### Prerequisites
 - **Node.js**: v18.0.0 or higher
@@ -247,7 +247,7 @@ npm run preview
 
 ---
 
-## 📜 Epigraphical & Archaeological Sources
+##  Epigraphical & Archaeological Sources
 
 GeoThamizh rejects speculative chronologies. Every date, inscription, and dynasty is sourced from reputable research bodies and peer-reviewed archaeological publications:
 
@@ -261,7 +261,7 @@ GeoThamizh rejects speculative chronologies. Every date, inscription, and dynast
 
 ---
 
-## 🎨 Design System & Aesthetics
+##  Design System & Aesthetics
 
 - **100% Vanilla CSS**: Crafted without utility frameworks (Tailwind/Bootstrap), prioritizing lightweight bundle sizes and high render performance.
 - **Theme**: Antique parchment aesthetic blended with dark-mode glassmorphic cards (`rgba(22, 19, 15, 0.85)`).
@@ -270,7 +270,7 @@ GeoThamizh rejects speculative chronologies. Every date, inscription, and dynast
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 Contributions are welcome! Whether you are an archaeologist, epigraphist, software engineer, or translator:
 
@@ -291,7 +291,7 @@ Contributions are welcome! Whether you are an archaeologist, epigraphist, softwa
 
 ---
 
-## 📄 License
+##  License
 
 This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
 
