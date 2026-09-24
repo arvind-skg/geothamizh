@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { 
   Navigation, BookOpen, Utensils, Share2, Sparkles, 
-  Globe, Menu, X, Loader2, MapPin, History, ChevronDown 
+  Globe, Menu, X, Loader2, MapPin, History, ChevronDown, Volume2, User
 } from 'lucide-react';
 
 export const Navbar = ({
@@ -10,21 +10,28 @@ export const Navbar = ({
   currentLanguage,
   setCurrentLanguage,
   translations,
+  currentUser,
+  onOpenLogin,
   onOpenAIGuide,
   onOpenKnowledgeGraph,
   onOpenLivingCulture,
   onOpenStories,
   onOpenPeople,
   onOpenWorks,
+  onOpenPeopleAndLiterature,
   onDetectLocation,
   isDetectingLocation,
   userLocation,
   onOpenCurrentLocationHistory,
   mapMode = 'live',
   setMapMode,
+  onOpenChronicles,
   onOpenItineraries,
   onOpenTodayInHistory,
-  onOpenSplitScreen
+  onOpenSplitScreen,
+  onOpenAudioGuide,
+  onOpenShareCard,
+  onOpenSOS
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [moreMenuOpen, setMoreMenuOpen] = useState(false);
@@ -38,11 +45,11 @@ export const Navbar = ({
         title="GeoThamizh — Click to return to explore map"
       >
         <div className="brand-logo-frame">
-          <img src="/logo.png" alt="GeoThamizh Logo" className="brand-logo-img" />
+          <img src="/navbar-logo.png" alt="Geoதமிழ் Logo" className="brand-logo-img" />
         </div>
         <div className="brand-title-wrap">
-          <h1 className="brand-title">Geo<span>Thamizh</span></h1>
-          <span className="brand-subtitle">Rooted in Time. Alive in Stories.</span>
+          <h1 className="brand-title">Geo<span className="brand-title-tamil">தமிழ்</span></h1>
+          <span className="brand-subtitle">ROOTED IN TIME. ALIVE IN STORIES.</span>
         </div>
       </div>
 
@@ -83,39 +90,21 @@ export const Navbar = ({
       {/* Desktop Navigation Links */}
       <nav className="nav-links">
         <button 
-          className="nav-link-btn"
-          onClick={onOpenItineraries}
-          title="Curated 1-Day Heritage Itineraries"
+          className={`nav-link-btn ${['chronicles', 'itineraries', 'today', 'stories', 'culture'].includes(activeTab) ? 'active' : ''}`}
+          onClick={() => onOpenChronicles ? onOpenChronicles('itineraries') : (onOpenItineraries && onOpenItineraries())}
+          title="Tamil Heritage Chronicles — Curated 1-Day Circuits, Today in History, Story Trails & Living Culture"
         >
           <span className="nav-link-icon">🧭</span>
-          <span>Itineraries</span>
+          <span>{translations.navChronicles || 'Chronicles & Tours'}</span>
         </button>
 
         <button 
-          className="nav-link-btn"
-          onClick={onOpenTodayInHistory}
-          title="Today in Tamil History — Daily Historical Capsule"
-        >
-          <span className="nav-link-icon">📅</span>
-          <span>Today in History</span>
-        </button>
-
-        <button 
-          className={`nav-link-btn ${activeTab === 'people' ? 'active' : ''}`}
-          onClick={onOpenPeople}
-          title="Explore Historical Figures, Monarchs & Poets"
+          className={`nav-link-btn ${['people', 'works', 'people-literature'].includes(activeTab) ? 'active' : ''}`}
+          onClick={onOpenPeopleAndLiterature || onOpenPeople}
+          title="Explore Historical Figures, Monarchs, Poets & Classical Literature of Tamilakam"
         >
           <span className="nav-link-icon">👑</span>
-          <span>People</span>
-        </button>
-
-        <button 
-          className={`nav-link-btn ${activeTab === 'works' ? 'active' : ''}`}
-          onClick={onOpenWorks}
-          title="Explore Classical Tamil Literature, Epics & Treatises"
-        >
-          <span className="nav-link-icon">📜</span>
-          <span>Literature</span>
+          <span>{translations.navPeopleAndLiterature || 'People & Literature'}</span>
         </button>
 
         {/* More Heritage Explorers Dropdown */}
@@ -178,6 +167,38 @@ export const Navbar = ({
                     <span className="nav-more-desc">Connected network of history</span>
                   </div>
                 </button>
+
+                {onOpenAudioGuide && (
+                  <button 
+                    className="nav-more-item"
+                    onClick={() => {
+                      onOpenAudioGuide();
+                      setMoreMenuOpen(false);
+                    }}
+                  >
+                    <Volume2 size={15} color="#ffd166" />
+                    <div className="nav-more-text">
+                      <span className="nav-more-title">Heritage Audio Tour</span>
+                      <span className="nav-more-desc">Spoken bilingual narration</span>
+                    </div>
+                  </button>
+                )}
+
+                {onOpenShareCard && (
+                  <button 
+                    className="nav-more-item"
+                    onClick={() => {
+                      onOpenShareCard();
+                      setMoreMenuOpen(false);
+                    }}
+                  >
+                    <Sparkles size={15} color="#fca5a5" />
+                    <div className="nav-more-text">
+                      <span className="nav-more-title">Social Share Card</span>
+                      <span className="nav-more-desc">1080x1080 exportable story card</span>
+                    </div>
+                  </button>
+                )}
               </div>
             </>
           )}
@@ -226,6 +247,36 @@ export const Navbar = ({
           </select>
         </div>
 
+        {/* Explorer Profile / Sign In Button */}
+        {onOpenLogin && (
+          <button 
+            type="button"
+            className="btn-nav-action btn-nav-profile"
+            onClick={onOpenLogin}
+            title={currentUser ? `Explorer Profile: ${currentUser.name} (${currentUser.roleTitle || 'Traveler'})` : "Explorer Sign In & Preferences"}
+            aria-label="Explorer Login and Profile"
+          >
+            <span style={{ fontSize: '13px', lineHeight: 1 }}>{currentUser?.roleIcon || '👤'}</span>
+            <span className="nav-btn-text">
+              {currentUser ? currentUser.name.split(' ')[0] : (currentLanguage === 'ta' ? 'நுழைவு' : 'Sign In')}
+            </span>
+          </button>
+        )}
+
+        {/* Tourist Emergency SOS Button */}
+        {onOpenSOS && (
+          <button 
+            type="button"
+            className="btn-nav-action btn-nav-sos"
+            onClick={onOpenSOS}
+            title="Tourist Emergency SOS — Police (112), Ambulance (108) & Real-Time GPS Rescue"
+            aria-label="Open Tourist Emergency SOS"
+          >
+            <span className="sos-badge-dot" />
+            <span className="sos-text">SOS</span>
+          </button>
+        )}
+
         {/* Mobile Hamburger Button */}
         <button 
           className="nav-link-btn mobile-menu-toggle" 
@@ -237,7 +288,7 @@ export const Navbar = ({
         </button>
       </div>
 
-      {/* Mobile Dropdown Menu with Backdrop */}
+      {/* Mobile Antique Manuscript Drawer with Backdrop */}
       {mobileMenuOpen && (
         <>
           <div 
@@ -245,99 +296,117 @@ export const Navbar = ({
             onClick={() => setMobileMenuOpen(false)} 
             aria-hidden="true"
           />
-          <div className="mobile-nav-dropdown">
+          <div className="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Navigation Menu">
             <div className="mobile-nav-header">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <img src="/logo.png" alt="GeoThamizh" style={{ width: '24px', height: '24px', borderRadius: '4px', objectFit: 'cover' }} />
-                <span style={{ fontFamily: 'var(--font-serif)', color: '#ffd166', fontWeight: 700, fontSize: '0.95rem' }}>
-                  GeoThamizh Atlas Menu
-                </span>
+              <div className="mobile-nav-brand">
+                <img src="/navbar-logo.png" alt="GeoThamizh" className="mobile-nav-logo" />
+                <div className="mobile-nav-title-wrap">
+                  <span className="brand-title">Geo<span className="brand-title-tamil">தமிழ்</span></span>
+                  <span className="mobile-nav-tagline">ROOTED IN TIME. ALIVE IN STORIES.</span>
+                </div>
               </div>
               <button 
                 onClick={() => setMobileMenuOpen(false)}
-                style={{ background: 'none', border: 'none', color: '#aaa', cursor: 'pointer', padding: '4px' }}
+                className="mobile-nav-close-btn"
                 aria-label="Close menu"
               >
-                <X size={16} />
+                <X size={18} />
               </button>
             </div>
 
-            {/* Mobile Mode Switcher */}
-            <div style={{ padding: '0.75rem 1rem 0.5rem', borderBottom: '1px solid rgba(212, 163, 89, 0.15)' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+            {/* Mobile Mode Switcher — Antique Card */}
+            <div className="mobile-mode-switcher-card">
+              <div className="mobile-mode-label">🏛️ Map Stratigraphy Mode:</div>
+              <div className="mobile-mode-grid">
                 <button
                   type="button"
+                  className={`mobile-mode-btn ${mapMode === 'live' ? 'active' : ''}`}
                   onClick={() => { setMapMode('live'); setMobileMenuOpen(false); }}
-                  style={{
-                    padding: '8px',
-                    borderRadius: '8px',
-                    border: `1.5px solid ${mapMode === 'live' ? '#d99b38' : 'rgba(212, 163, 89, 0.2)'}`,
-                    background: mapMode === 'live' ? 'linear-gradient(135deg, #9e3223, #7d2417)' : '#1a1410',
-                    color: '#fff',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '6px',
-                    cursor: 'pointer',
-                    fontWeight: 600,
-                    fontSize: '12px'
-                  }}
                 >
-                  <span>📍</span>
-                  <span>Live Map</span>
+                  <span className="mobile-mode-icon">📍</span>
+                  <div className="mobile-mode-text">
+                    <span className="mobile-mode-primary">Live Map</span>
+                    <span className="mobile-mode-sub">நிகழ்காலம்</span>
+                  </div>
                 </button>
                 <button
                   type="button"
+                  className={`mobile-mode-btn ${mapMode === 'historical' ? 'active' : ''}`}
                   onClick={() => { setMapMode('historical'); setMobileMenuOpen(false); }}
-                  style={{
-                    padding: '8px',
-                    borderRadius: '8px',
-                    border: `1.5px solid ${mapMode === 'historical' ? '#d99b38' : 'rgba(212, 163, 89, 0.2)'}`,
-                    background: mapMode === 'historical' ? 'linear-gradient(135deg, #9e3223, #7d2417)' : '#1a1410',
-                    color: '#fff',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '6px',
-                    cursor: 'pointer',
-                    fontWeight: 600,
-                    fontSize: '12px'
-                  }}
                 >
-                  <span>⏳</span>
-                  <span>Historical</span>
+                  <span className="mobile-mode-icon">⏳</span>
+                  <div className="mobile-mode-text">
+                    <span className="mobile-mode-primary">Historical</span>
+                    <span className="mobile-mode-sub">வரலாறு</span>
+                  </div>
                 </button>
               </div>
             </div>
 
             <div className="mobile-nav-list">
-              {/* Feature 6: Curated Itineraries in Mobile */}
+              {/* Feature: Tourist Emergency SOS in Mobile */}
+              {onOpenSOS && (
+                <button 
+                  className="mobile-nav-item mobile-nav-sos-item"
+                  onClick={() => {
+                    onOpenSOS();
+                    setMobileMenuOpen(false);
+                  }}
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(143, 29, 29, 0.4), rgba(45, 12, 12, 0.7))',
+                    border: '1.5px solid #ff4d4f',
+                    boxShadow: '0 0 15px rgba(230, 57, 70, 0.25)'
+                  }}
+                >
+                  <span style={{ fontSize: '18px' }}>🚨</span>
+                  <div style={{ textAlign: 'left' }}>
+                    <div style={{ fontWeight: 700, color: '#ff4d4f', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <span>அவசர உதவி • SOS Rescue</span>
+                      <span className="sos-beacon-dot" />
+                    </div>
+                    <div style={{ fontSize: '10.5px', color: '#ffccd5' }}>
+                      112 / 108 dialer, live GPS coords & distress siren
+                    </div>
+                  </div>
+                </button>
+              )}
+              {/* Consolidated Hub 1: Tamil Heritage Chronicles */}
               <button 
                 className="mobile-nav-item"
                 onClick={() => {
-                  if (onOpenItineraries) onOpenItineraries();
+                  if (onOpenChronicles) onOpenChronicles('itineraries');
+                  else if (onOpenItineraries) onOpenItineraries();
                   setMobileMenuOpen(false);
                 }}
               >
-                <span style={{ fontSize: '16px' }}>🧭</span>
+                <span style={{ fontSize: '18px' }}>🧭</span>
                 <div style={{ textAlign: 'left' }}>
-                  <div style={{ fontWeight: 600, color: '#fff' }}>1-Day Curated Itineraries</div>
-                  <div style={{ fontSize: '10.5px', color: '#aaa' }}>Chola temples, Vaigai & Pallava circuits</div>
+                  <div style={{ fontWeight: 600, color: '#ffd166' }}>
+                    {translations.navChronicles || 'Chronicles & Tours'}
+                  </div>
+                  <div style={{ fontSize: '10.5px', color: '#aaa' }}>
+                    1-Day Circuits, Today in History, Story Trails & Living Culture
+                  </div>
                 </div>
               </button>
 
-              {/* Feature 11: Today in Tamil History in Mobile */}
+              {/* Consolidated Hub 2: People & Literature */}
               <button 
                 className="mobile-nav-item"
                 onClick={() => {
-                  if (onOpenTodayInHistory) onOpenTodayInHistory();
+                  if (onOpenPeopleAndLiterature) onOpenPeopleAndLiterature();
+                  else if (onOpenPeople) onOpenPeople();
                   setMobileMenuOpen(false);
                 }}
               >
-                <span style={{ fontSize: '16px' }}>📅</span>
+                <span style={{ fontSize: '18px' }}>👑</span>
                 <div style={{ textAlign: 'left' }}>
-                  <div style={{ fontWeight: 600, color: '#ffd166' }}>Today in Tamil History</div>
-                  <div style={{ fontSize: '10.5px', color: '#aaa' }}>Daily epigraphs & royal charters</div>
+                  <div style={{ fontWeight: 600, color: '#fff' }}>
+                    {translations.navPeopleAndLiterature || 'People & Literature'}
+                  </div>
+                  <div style={{ fontSize: '10.5px', color: '#aaa' }}>
+                    Monarchs, poets, Sangam epics & classical treatises
+                  </div>
                 </div>
               </button>
 
@@ -361,62 +430,6 @@ export const Navbar = ({
               <button 
                 className="mobile-nav-item"
                 onClick={() => {
-                  if (onOpenPeople) onOpenPeople();
-                  setMobileMenuOpen(false);
-                }}
-              >
-                <span style={{ fontSize: '16px' }}>👑</span>
-                <div style={{ textAlign: 'left' }}>
-                  <div style={{ fontWeight: 600, color: '#fff' }}>{translations.navPeople || 'People of Tamilakam'}</div>
-                  <div style={{ fontSize: '10.5px', color: '#aaa' }}>Monarchs, poets, scholars & saints</div>
-                </div>
-              </button>
-
-              <button 
-                className="mobile-nav-item"
-                onClick={() => {
-                  if (onOpenWorks) onOpenWorks();
-                  setMobileMenuOpen(false);
-                }}
-              >
-                <span style={{ fontSize: '16px' }}>📜</span>
-                <div style={{ textAlign: 'left' }}>
-                  <div style={{ fontWeight: 600, color: '#fff' }}>{translations.navWorks || 'Classical Literature'}</div>
-                  <div style={{ fontSize: '10.5px', color: '#aaa' }}>Sangam anthologies, epics & treatises</div>
-                </div>
-              </button>
-
-              <button 
-                className="mobile-nav-item"
-                onClick={() => {
-                  onOpenStories();
-                  setMobileMenuOpen(false);
-                }}
-              >
-                <BookOpen size={16} color="#d4952b" />
-                <div style={{ textAlign: 'left' }}>
-                  <div style={{ fontWeight: 600, color: '#fff' }}>{translations.navStories}</div>
-                  <div style={{ fontSize: '10.5px', color: '#aaa' }}>Curated journeys & historical trails</div>
-                </div>
-              </button>
-
-              <button 
-                className="mobile-nav-item"
-                onClick={() => {
-                  onOpenLivingCulture();
-                  setMobileMenuOpen(false);
-                }}
-              >
-                <Utensils size={16} color="#ffd166" />
-                <div style={{ textAlign: 'left' }}>
-                  <div style={{ fontWeight: 600, color: '#fff' }}>{translations.navCulture}</div>
-                  <div style={{ fontSize: '10.5px', color: '#aaa' }}>Culinary heritage, GI crafts & festivals</div>
-                </div>
-              </button>
-
-              <button 
-                className="mobile-nav-item"
-                onClick={() => {
                   onOpenKnowledgeGraph();
                   setMobileMenuOpen(false);
                 }}
@@ -427,6 +440,38 @@ export const Navbar = ({
                   <div style={{ fontSize: '10.5px', color: '#aaa' }}>Semantic network connecting eras & sites</div>
                 </div>
               </button>
+
+              {onOpenAudioGuide && (
+                <button 
+                  className="mobile-nav-item"
+                  onClick={() => {
+                    onOpenAudioGuide();
+                    setMobileMenuOpen(false);
+                  }}
+                >
+                  <Volume2 size={16} color="#ffd166" />
+                  <div style={{ textAlign: 'left' }}>
+                    <div style={{ fontWeight: 600, color: '#fff' }}>Heritage Audio Tour</div>
+                    <div style={{ fontSize: '10.5px', color: '#aaa' }}>Hands-free spoken voice narration</div>
+                  </div>
+                </button>
+              )}
+
+              {onOpenShareCard && (
+                <button 
+                  className="mobile-nav-item"
+                  onClick={() => {
+                    onOpenShareCard();
+                    setMobileMenuOpen(false);
+                  }}
+                >
+                  <Sparkles size={16} color="#fca5a5" />
+                  <div style={{ textAlign: 'left' }}>
+                    <div style={{ fontWeight: 600, color: '#fff' }}>Social Share Card</div>
+                    <div style={{ fontSize: '10.5px', color: '#aaa' }}>1080x1080 exportable story card</div>
+                  </div>
+                </button>
+              )}
 
               {/* Quick GPS Location History in Mobile Menu */}
               <button 
@@ -448,6 +493,37 @@ export const Navbar = ({
                 </div>
               </button>
             </div>
+
+            {/* Mobile Explorer Profile Button */}
+            {onOpenLogin && (
+              <div style={{ padding: '10px 16px', borderTop: '1px solid rgba(212, 163, 89, 0.15)' }}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenLogin();
+                  }}
+                  style={{
+                    width: '100%',
+                    background: 'linear-gradient(135deg, rgba(212, 149, 43, 0.2), rgba(178, 74, 59, 0.25))',
+                    border: '1px solid #d4952b',
+                    color: '#ffd166',
+                    padding: '8px 12px',
+                    borderRadius: '6px',
+                    fontSize: '12px',
+                    fontWeight: 600,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    cursor: 'pointer'
+                  }}
+                >
+                  <span>{currentUser?.roleIcon || '👤'}</span>
+                  <span>{currentUser ? `${currentUser.name} (${currentUser.roleTitle || 'Profile'})` : (currentLanguage === 'ta' ? 'சுயவிவர நுழைவு (Sign In)' : 'Explorer Sign In & Profile')}</span>
+                </button>
+              </div>
+            )}
 
             {/* Mobile Language Selector Footer */}
             <div className="mobile-nav-footer">

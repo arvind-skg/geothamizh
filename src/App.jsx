@@ -4,18 +4,20 @@ import { MapViewer } from './components/MapViewer';
 import { SearchFilterPanel } from './components/SearchFilterPanel';
 import { TimelineSlider } from './components/TimelineSlider';
 import { PlaceConnectedHistoryModal } from './components/PlaceConnectedHistoryModal';
-import { AIGuideDrawer } from './components/AIGuideDrawer';
+import { AIChatbotDrawer, AIChatbotFloatingButton } from './components/AIChatbot';
 import { StoriesDrawer } from './components/StoriesDrawer';
 import { LivingCultureSection } from './components/LivingCultureSection';
 import { KnowledgeGraphModal } from './components/KnowledgeGraphModal';
-import { PeopleExplorerModal } from './components/PeopleExplorerModal';
-import { WorksExplorerModal } from './components/WorksExplorerModal';
+import { PeopleAndLiteratureModal } from './components/PeopleAndLiteratureModal';
 import { SplashScreen } from './components/SplashScreen';
 import { SplitScreenMapSlider } from './components/SplitScreenMapSlider';
 import { AudioHeritageGuideModal } from './components/AudioHeritageGuideModal';
 import { ItineraryPlannerModal } from './components/ItineraryPlannerModal';
 import { TodayInHistoryModal } from './components/TodayInHistoryModal';
 import { SocialShareCardModal } from './components/SocialShareCardModal';
+import { TouristSOSModal } from './components/TouristSOSModal';
+import { HeritageChroniclesModal } from './components/HeritageChroniclesModal';
+import { LoginModal } from './components/LoginModal';
 
 import { PLACES } from './data/places';
 import { TIMELINE_PERIODS, PERIODS } from './data/periods';
@@ -31,6 +33,7 @@ import { STORIES } from './data/stories';
 import { TRANSLATIONS } from './data/translations';
 import { HISTORICAL_PEOPLE } from './data/people';
 import { LITERATURE_WORKS } from './data/works';
+import { INSCRIPTIONS } from './data/inscriptions';
 
 // Distance calculation utility (Haversine formula in km)
 function calculateDistance(lat1, lon1, lat2, lon2) {
@@ -51,7 +54,46 @@ export default function App() {
   // Timeline Period State ('today', 'later', 'medieval', 'post_sangam', 'sangam', 'pre_sangam')
   const [activePeriodId, setActivePeriodId] = useState('today');
   const [activeTab, setActiveTab] = useState('explore');
-  const [currentLanguage, setCurrentLanguage] = useState('en');
+
+  // User Profile & Authentication State (persisted in localStorage)
+  const [currentUser, setCurrentUser] = useState(() => {
+    try {
+      const saved = localStorage.getItem('geothamizh_user');
+      return saved ? JSON.parse(saved) : null;
+    } catch (e) {
+      return null;
+    }
+  });
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+
+  const [currentLanguage, setCurrentLanguage] = useState(() => {
+    try {
+      const saved = localStorage.getItem('geothamizh_user');
+      if (saved) {
+        const u = JSON.parse(saved);
+        if (u && u.preferredLanguage) return u.preferredLanguage;
+      }
+    } catch (e) {}
+    return 'en';
+  });
+
+  const handleSaveUser = (userData) => {
+    setCurrentUser(userData);
+    try {
+      localStorage.setItem('geothamizh_user', JSON.stringify(userData));
+    } catch (e) {}
+    if (userData.preferredLanguage) {
+      setCurrentLanguage(userData.preferredLanguage);
+    }
+  };
+
+  const handleLogout = () => {
+    setCurrentUser(null);
+    try {
+      localStorage.removeItem('geothamizh_user');
+    } catch (e) {}
+  };
+
   // App Initial Splash Loading Screen (1 Second Duration)
   const [showSplash, setShowSplash] = useState(true);
 
@@ -78,8 +120,8 @@ export default function App() {
   const [isStoriesOpen, setIsStoriesOpen] = useState(false);
   const [isCultureOpen, setIsCultureOpen] = useState(false);
   const [isGraphOpen, setIsGraphOpen] = useState(false);
-  const [isPeopleOpen, setIsPeopleOpen] = useState(false);
-  const [isWorksOpen, setIsWorksOpen] = useState(false);
+  const [isPeopleLiteratureOpen, setIsPeopleLiteratureOpen] = useState(false);
+  const [peopleLiteratureTab, setPeopleLiteratureTab] = useState('people');
   const [isSplitScreenOpen, setIsSplitScreenOpen] = useState(false);
   const [isAudioGuideOpen, setIsAudioGuideOpen] = useState(false);
   const [activeAudioPlace, setActiveAudioPlace] = useState(null);
@@ -87,6 +129,16 @@ export default function App() {
   const [isTodayHistoryOpen, setIsTodayHistoryOpen] = useState(false);
   const [isShareCardOpen, setIsShareCardOpen] = useState(false);
   const [activeSharePlace, setActiveSharePlace] = useState(null);
+  const [isSosOpen, setIsSosOpen] = useState(false);
+
+  // Consolidated Heritage Chronicles Hub State
+  const [isChroniclesOpen, setIsChroniclesOpen] = useState(false);
+  const [chroniclesTab, setChroniclesTab] = useState('itineraries');
+
+  const handleOpenChronicles = (tab = 'itineraries') => {
+    setChroniclesTab(tab);
+    setIsChroniclesOpen(true);
+  };
 
   // Story Trail State
   const [activeStory, setActiveStory] = useState(null);
@@ -302,15 +354,31 @@ export default function App() {
         currentLanguage={currentLanguage}
         setCurrentLanguage={setCurrentLanguage}
         translations={translations}
+        currentUser={currentUser}
+        onOpenLogin={() => setIsLoginOpen(true)}
         onOpenAIGuide={() => setIsAIGuideOpen(true)}
         onOpenKnowledgeGraph={() => setIsGraphOpen(true)}
-        onOpenLivingCulture={() => setIsCultureOpen(true)}
-        onOpenStories={() => setIsStoriesOpen(true)}
-        onOpenPeople={() => setIsPeopleOpen(true)}
-        onOpenWorks={() => setIsWorksOpen(true)}
-        onOpenItineraries={() => setIsItinerariesOpen(true)}
-        onOpenTodayInHistory={() => setIsTodayHistoryOpen(true)}
+        onOpenLivingCulture={() => handleOpenChronicles('culture')}
+        onOpenStories={() => handleOpenChronicles('stories')}
+        onOpenPeopleAndLiterature={() => {
+          setPeopleLiteratureTab('people');
+          setIsPeopleLiteratureOpen(true);
+        }}
+        onOpenPeople={() => {
+          setPeopleLiteratureTab('people');
+          setIsPeopleLiteratureOpen(true);
+        }}
+        onOpenWorks={() => {
+          setPeopleLiteratureTab('works');
+          setIsPeopleLiteratureOpen(true);
+        }}
+        onOpenChronicles={handleOpenChronicles}
+        onOpenItineraries={() => handleOpenChronicles('itineraries')}
+        onOpenTodayInHistory={() => handleOpenChronicles('today')}
         onOpenSplitScreen={() => setIsSplitScreenOpen(true)}
+        onOpenAudioGuide={() => handleOpenAudioGuide(selectedPlace)}
+        onOpenShareCard={() => handleOpenShareCard(selectedPlace)}
+        onOpenSOS={() => setIsSosOpen(true)}
         onDetectLocation={handleDetectLocation}
         isDetectingLocation={isDetectingLocation}
         userLocation={userLocation}
@@ -376,21 +444,47 @@ export default function App() {
         onClose={() => setConnectedHistoryPlace(null)}
         translations={translations}
         sourcesRegistry={SOURCES}
-        onOpenAIGuide={() => setIsAIGuideOpen(true)}
+        onOpenAIGuide={(targetP) => {
+          if (targetP) setSelectedPlace(targetP);
+          setIsAIGuideOpen(true);
+        }}
         onOpenAudioGuide={() => handleOpenAudioGuide(connectedHistoryPlace)}
         onOpenShareCard={() => handleOpenShareCard(connectedHistoryPlace)}
       />
 
-      {/* Source-Grounded AI Heritage Guide Drawer */}
-      <AIGuideDrawer
+      {/* Floating AI Guide Trigger Button */}
+      <AIChatbotFloatingButton onClick={() => setIsAIGuideOpen(true)} />
+
+      {/* Production-Grade AI Heritage Guide Drawer */}
+      <AIChatbotDrawer
         isOpen={isAIGuideOpen}
         onClose={() => setIsAIGuideOpen(false)}
         places={PLACES}
-        periods={PERIODS}
+        people={HISTORICAL_PEOPLE}
+        works={LITERATURE_WORKS}
+        inscriptions={INSCRIPTIONS}
         sourcesRegistry={SOURCES}
         onSelectPlace={handleSelectPlace}
+        onOpenPlaceDetails={handleSelectPlace}
+        onShowJourney={(routeData) => {
+          if (routeData && routeData.stops && routeData.stops.length > 0) {
+            const firstStop = PLACES.find(p => p.id === routeData.stops[0].id) || PLACES[0];
+            handleSelectPlace(firstStop);
+          }
+        }}
+        onSelectPeriod={(periodId) => {
+          setMapMode('historical');
+          setActivePeriodId(periodId);
+        }}
+        onOpenPeople={(personId) => {
+          setPeopleLiteratureTab('people');
+          setIsPeopleLiteratureOpen(true);
+        }}
         initialPlaceContext={selectedPlace}
+        currentLanguage={currentLanguage}
+        onLanguageChange={setCurrentLanguage}
         translations={translations}
+        groqApiKey={import.meta.env.VITE_GROQ_API_KEY}
       />
 
       {/* Curated Journeys & Story Trails Drawer */}
@@ -424,21 +518,30 @@ export default function App() {
         translations={translations}
       />
 
-      {/* People Explorer Modal (Section 17) */}
-      <PeopleExplorerModal
-        isOpen={isPeopleOpen}
-        onClose={() => setIsPeopleOpen(false)}
+      {/* Unified People & Literature Explorer Modal */}
+      <PeopleAndLiteratureModal
+        isOpen={isPeopleLiteratureOpen}
+        onClose={() => setIsPeopleLiteratureOpen(false)}
         people={HISTORICAL_PEOPLE}
+        works={LITERATURE_WORKS}
+        initialSubTab={peopleLiteratureTab}
         onSelectPlaceById={handleSelectPlaceById}
         translations={translations}
       />
 
-      {/* Literature & Works Explorer Modal (Section 18) */}
-      <WorksExplorerModal
-        isOpen={isWorksOpen}
-        onClose={() => setIsWorksOpen(false)}
-        works={LITERATURE_WORKS}
+      {/* Unified Tamil Heritage Chronicles Hub (1-Day Circuits, Today in History, Story Trails & Living Culture) */}
+      <HeritageChroniclesModal
+        isOpen={isChroniclesOpen}
+        onClose={() => setIsChroniclesOpen(false)}
+        initialTab={chroniclesTab}
         onSelectPlaceById={handleSelectPlaceById}
+        onSelectPlaceOnMap={handleSelectPlaceById}
+        userLocation={userLocation}
+        onStartStory={(story) => {
+          setActiveStory(story);
+          setActiveStoryStopIndex(0);
+          setIsChroniclesOpen(false);
+        }}
         translations={translations}
       />
 
@@ -451,6 +554,7 @@ export default function App() {
         activePeriodId={activePeriodId}
         onSelectPlace={handleSelectPlace}
         translations={translations}
+        userLocation={userLocation}
       />
 
       {/* Feature 5: Self-Guided Audio Heritage Tour Modal */}
@@ -464,6 +568,7 @@ export default function App() {
           setSelectedPlace(p);
         }}
         translations={translations}
+        currentLanguage={currentLanguage}
       />
 
       {/* Feature 6: Curated 1-Day Heritage Itineraries Modal */}
@@ -472,6 +577,8 @@ export default function App() {
         onClose={() => setIsItinerariesOpen(false)}
         itineraries={CURATED_ITINERARIES}
         onSelectPlaceById={handleSelectPlaceById}
+        onSelectPlaceOnMap={handleSelectPlaceById}
+        userLocation={userLocation}
         translations={translations}
       />
 
@@ -481,6 +588,7 @@ export default function App() {
         onClose={() => setIsTodayHistoryOpen(false)}
         dailyEntries={DAILY_HISTORY}
         onSelectPlaceById={handleSelectPlaceById}
+        onSelectPlaceOnMap={handleSelectPlaceById}
         translations={translations}
       />
 
@@ -489,7 +597,34 @@ export default function App() {
         isOpen={isShareCardOpen}
         onClose={() => setIsShareCardOpen(false)}
         place={activeSharePlace || selectedPlace || PLACES[0]}
+        cardData={activeSharePlace || selectedPlace || PLACES[0]}
+        places={PLACES}
+        onSelectPlace={(p) => {
+          setActiveSharePlace(p);
+          setSelectedPlace(p);
+        }}
         userLocation={userLocation}
+        translations={translations}
+      />
+
+      {/* Feature 14: Tourist Emergency SOS Assistance Modal */}
+      <TouristSOSModal
+        isOpen={isSosOpen}
+        onClose={() => setIsSosOpen(false)}
+        userLocation={userLocation}
+        selectedPlace={selectedPlace}
+        onDetectLocation={() => handleDetectLocation(false)}
+      />
+
+      {/* Explorer Login & Profile Modal */}
+      <LoginModal
+        isOpen={isLoginOpen}
+        onClose={() => setIsLoginOpen(false)}
+        currentUser={currentUser}
+        onSaveUser={handleSaveUser}
+        onLogout={handleLogout}
+        currentLanguage={currentLanguage}
+        onLanguageChange={setCurrentLanguage}
         translations={translations}
       />
     </div>

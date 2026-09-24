@@ -7625,9 +7625,135 @@ h2, h3 {
   transition: all 0.2s ease;
 }
 
-.today-jump-map-btn:hover {
-  background: linear-gradient(135deg, #3d2c18, #22180d);
+.today-count-pill {
+  font-size: 11px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ccc;
+  padding: 1px 8px;
+  border-radius: 12px;
+  font-family: sans-serif;
+  font-weight: 500;
+}
+
+.today-date-quick-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.today-date-native-picker {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(212, 163, 89, 0.35);
+  border-radius: 6px;
+  color: #ffd166;
+  font-size: 11.5px;
+  padding: 4px 8px;
+  outline: none;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.today-date-native-picker:hover,
+.today-date-native-picker:focus {
   border-color: #ffd166;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.today-jump-today-btn {
+  background: linear-gradient(135deg, rgba(212, 149, 43, 0.25), rgba(212, 149, 43, 0.1));
+  border: 1px solid #d4952b;
+  color: #ffd166;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.today-jump-today-btn:hover {
+  background: #d4952b;
+  color: #120e0a;
+}
+
+.today-significance-box {
+  background: linear-gradient(135deg, rgba(212, 149, 43, 0.12), rgba(0, 0, 0, 0.3));
+  border: 1px solid rgba(212, 163, 89, 0.3);
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: #f5eedc;
+  line-height: 1.5;
+}
+
+.today-significance-icon {
+  color: #ffd166;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.today-significance-label {
+  color: #ffd166;
+  font-weight: 700;
+}
+
+.today-classical-verse-box {
+  background: rgba(20, 16, 12, 0.7);
+  border-left: 3px solid #ffd166;
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+}
+
+.today-verse-badge {
+  font-size: 10px;
+  color: #d4a359;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.today-verse-text {
+  font-family: 'Noto Sans Tamil', serif;
+  font-size: 13.5px;
+  color: #ffeed0;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.today-tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.today-tag-pill {
+  font-size: 10.5px;
+  color: #d4952b;
+  background: rgba(212, 149, 43, 0.1);
+  border: 1px solid rgba(212, 149, 43, 0.2);
+  padding: 2px 7px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.today-evidence-note {
+  font-size: 11px;
+  color: #9e9382;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  padding: 6px 10px;
+  line-height: 1.4;
+}
+
+.today-evidence-note strong {
+  color: #c9ba9f;
 }
 
 /* Story Trails Layout */
@@ -8021,6 +8147,686 @@ h2, h3 {
   .monument-stat-chips-grid {
     grid-template-columns: 1fr 1fr;
   }
+}
+
+/* ========================================================
+   VISUALLY ENGAGING REAL-WORLD MEDIA & GALLERIES SYSTEM
+   ======================================================== */
+
+/* 1. Left Search Directory Real-World Site Thumbnails */
+.city-directory-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 8px 10px !important;
+  border-radius: 8px !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.city-item-thumb-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid rgba(212, 149, 43, 0.35);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  background: #19120c;
+  position: relative;
+}
+
+.city-item-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.city-directory-item:hover .city-item-thumb {
+  transform: scale(1.1);
+}
+
+.city-directory-item.selected .city-item-thumb-wrap {
+  border-color: #ffd166;
+  box-shadow: 0 0 10px rgba(212, 149, 43, 0.4);
+}
+
+.city-item-thumb-placeholder {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: rgba(212, 149, 43, 0.1);
+  border: 1px solid rgba(212, 149, 43, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* 2. People & Historical Figures Explorer Enhancements */
+.figure-avatar-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1.5px solid rgba(212, 149, 43, 0.4);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  background: #1a140e;
+}
+
+.figure-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.25s ease;
+}
+
+.explorer-list-item:hover .figure-avatar-img {
+  transform: scale(1.08);
+}
+
+.explorer-list-item.selected .figure-avatar-wrap {
+  border-color: #ffd166;
+  box-shadow: 0 0 12px rgba(255, 209, 102, 0.45);
+}
+
+.figure-list-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.figure-list-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.figure-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.explorer-list-item.selected .figure-name {
+  color: #ffd166;
+}
+
+.figure-period {
+  font-size: 9.5px;
+  color: #d4952b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.figure-tamil {
+  font-size: 11.5px;
+  color: #95d5b2;
+  line-height: 1.15;
+}
+
+.figure-role-text {
+  font-size: 11px;
+  color: #a89f96;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Person Detail Hero Card */
+.figure-hero-card {
+  position: relative;
+  min-height: 160px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(212, 149, 43, 0.35);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  margin-bottom: 16px;
+  background: #140d08;
+}
+
+.figure-hero-img-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.figure-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  filter: brightness(0.65) contrast(1.1);
+}
+
+.figure-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20, 13, 8, 0.3) 0%, rgba(20, 13, 8, 0.95) 85%);
+}
+
+.figure-hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 160px;
+}
+
+.figure-dynasty-badge {
+  font-size: 10.5px;
+  color: #ffd166;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.figure-hero-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.15;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.figure-hero-tamil {
+  font-size: 1.05rem;
+  color: #ffd166;
+  margin-top: 3px;
+  font-weight: 500;
+}
+
+.figure-role-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 8px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  background: rgba(212, 149, 43, 0.2);
+  border: 1px solid rgba(212, 149, 43, 0.4);
+  color: #ffe6a7;
+  font-size: 11px;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.figure-bio-box {
+  font-size: 13.5px;
+  color: #e5ded5;
+  line-height: 1.65;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 14px 18px;
+  border-radius: 8px;
+  border-left: 3px solid #d4952b;
+  margin-bottom: 16px;
+}
+
+/* 3. Classical Literature Explorer Enhancements */
+.work-thumb-wrap {
+  width: 44px;
+  height: 52px;
+  border-radius: 6px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid rgba(9, 188, 138, 0.35);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  background: #141c18;
+}
+
+.work-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.25s ease;
+}
+
+.explorer-list-item.works-item:hover .work-thumb-img {
+  transform: scale(1.1);
+}
+
+.explorer-list-item.works-item.selected .work-thumb-wrap {
+  border-color: #95d5b2;
+  box-shadow: 0 0 10px rgba(9, 188, 138, 0.4);
+}
+
+.work-list-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.work-list-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.work-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.explorer-list-item.works-item.selected .work-title {
+  color: #95d5b2;
+}
+
+.work-tamil {
+  font-size: 11.5px;
+  color: #ffd166;
+}
+
+.work-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #aaa;
+  gap: 6px;
+}
+
+.work-poet-tag {
+  color: #d4952b;
+  font-size: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Literature Hero Card */
+.work-hero-card {
+  position: relative;
+  min-height: 160px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(9, 188, 138, 0.35);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  margin-bottom: 16px;
+  background: #0f1713;
+}
+
+.work-hero-img-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.work-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: brightness(0.6) contrast(1.15);
+}
+
+.work-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 23, 19, 0.3) 0%, rgba(15, 23, 19, 0.95) 85%);
+}
+
+.work-hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 160px;
+}
+
+.work-genre-badge {
+  font-size: 10.5px;
+  color: #95d5b2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.work-hero-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.15;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.work-hero-tamil {
+  font-size: 1.1rem;
+  color: #ffd166;
+  margin-top: 3px;
+}
+
+.work-author-link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 12px;
+  color: #95d5b2;
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.15s ease;
+}
+
+.work-author-link-btn:hover {
+  color: #ffd166;
+}
+
+.work-summary-box {
+  font-size: 13.5px;
+  color: #e0d8cc;
+  line-height: 1.65;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 14px 18px;
+  border-radius: 8px;
+  border-left: 3px solid #09bc8a;
+  margin-bottom: 16px;
+}
+
+.work-excerpt-card {
+  background: rgba(212, 149, 43, 0.08);
+  border: 1px solid rgba(212, 149, 43, 0.25);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-bottom: 16px;
+}
+
+.excerpt-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #d4952b;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.excerpt-tamil-text {
+  font-size: 14px;
+  color: #ffd166;
+  font-style: italic;
+  margin-bottom: 8px;
+  line-height: 1.6;
+  font-family: var(--font-tamil);
+}
+
+.excerpt-english-text {
+  font-size: 12.5px;
+  color: #e5ded5;
+  line-height: 1.45;
+}
+
+.panel-section-title {
+  font-size: 11.5px;
+  color: #d4952b;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.place-jump-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: rgba(19, 194, 194, 0.12);
+  border: 1px solid rgba(19, 194, 194, 0.4);
+  color: #90e0ef;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.place-jump-pill:hover {
+  background: rgba(19, 194, 194, 0.22);
+  border-color: #13c2c2;
+}
+
+.work-jump-pill {
+  padding: 6px 12px;
+  background: rgba(212, 149, 43, 0.12);
+  border: 1px solid rgba(212, 149, 43, 0.35);
+  border-radius: 6px;
+  font-size: 12px;
+  color: #ffd166;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.work-jump-pill:hover {
+  background: rgba(212, 149, 43, 0.22);
+  border-color: #ffd166;
+}
+
+.inscription-chip {
+  padding: 4px 10px;
+  background: rgba(9, 188, 138, 0.1);
+  border: 1px solid rgba(9, 188, 138, 0.3);
+  border-radius: 4px;
+  font-size: 12px;
+  color: #95d5b2;
+}
+
+/* 4. Multi-Photo Monument Showcase in Place Connected History Modal */
+.monument-gallery-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.monument-main-banner {
+  position: relative;
+  height: 220px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(212, 149, 43, 0.35);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  background: #140d08;
+}
+
+.monument-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.monument-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(15, 14, 12, 0.95) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 14px 16px;
+}
+
+.monument-banner-top-badge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #ffd166;
+  font-weight: 600;
+}
+
+.photo-counter-badge {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(212, 149, 43, 0.4);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 10.5px;
+  color: #ffd166;
+}
+
+.monument-banner-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.monument-tamil-title {
+  font-family: 'Noto Sans Tamil', sans-serif;
+  font-size: 1.25rem;
+  color: #ffd166;
+  font-weight: 700;
+}
+
+.monument-banner-meta {
+  font-size: 0.85rem;
+  color: #e5ded5;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.monument-banner-caption {
+  font-size: 11px;
+  color: #c4b5a5;
+  margin-top: 2px;
+}
+
+.monument-thumb-row {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: thin;
+}
+
+.monument-thumb-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 8px;
+  background: #18120c;
+  border: 1px solid rgba(212, 149, 43, 0.25);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.monument-thumb-btn:hover {
+  border-color: #d4952b;
+  background: #221a12;
+}
+
+.monument-thumb-btn.active {
+  border: 1.5px solid #ffd166;
+  background: linear-gradient(135deg, rgba(212, 149, 43, 0.25), rgba(143, 29, 29, 0.25));
+  box-shadow: 0 0 10px rgba(212, 149, 43, 0.35);
+}
+
+.monument-thumb-img {
+  width: 38px;
+  height: 38px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.monument-thumb-label {
+  font-size: 11px;
+  color: #e0d8cc;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.monument-thumb-btn.active .monument-thumb-label {
+  color: #ffd166;
+  font-weight: 600;
+}
+
+/* 5. 1-Day Circuits Stop Photography */
+.circuit-stop-visual-card {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(145deg, #1b130d, #140d08);
+  border: 1px solid rgba(212, 149, 43, 0.22);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+  transition: all 0.25s ease;
+}
+
+.circuit-stop-visual-card:hover {
+  border-color: #d4952b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+}
+
+.circuit-stop-photo-wrap {
+  position: relative;
+  height: 130px;
+  width: 100%;
+  overflow: hidden;
+  background: #110a06;
+}
+
+.circuit-stop-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.circuit-stop-visual-card:hover .circuit-stop-photo {
+  transform: scale(1.06);
+}
+
+.circuit-stop-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(20, 13, 8, 0.85) 100%);
+}
+
+.circuit-stop-seq-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(20, 13, 8, 0.85);
+  border: 1px solid rgba(212, 149, 43, 0.45);
+  color: #ffd166;
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  backdrop-filter: blur(4px);
 }
 
 

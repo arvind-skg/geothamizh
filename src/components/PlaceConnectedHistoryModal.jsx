@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { 
   X, Clock, MapPin, Navigation, History, ShieldCheck, 
   BookOpen, Scroll, Users, Compass, Utensils, Award, ExternalLink, Sparkles, ArrowRight,
-  Volume2, VolumeX, Play, Pause, Square, Video, RotateCcw
+  Volume2, VolumeX, Play, Pause, Square, Video, RotateCcw, ChevronDown
 } from 'lucide-react';
 
 export const PlaceConnectedHistoryModal = ({
@@ -22,9 +22,11 @@ export const PlaceConnectedHistoryModal = ({
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const [isPausedAudio, setIsPausedAudio] = useState(false);
   const [speechRate, setSpeechRate] = useState(1.0);
+  const [activePhotoIdx, setActivePhotoIdx] = useState(0);
 
-  // Stop any active audio on unmount or place change
+  // Stop any active audio and reset photo index on place change
   useEffect(() => {
+    setActivePhotoIdx(0);
     return () => {
       if (typeof window !== 'undefined' && window.speechSynthesis) {
         window.speechSynthesis.cancel();
@@ -96,85 +98,60 @@ export const PlaceConnectedHistoryModal = ({
     <div className="modal-overlay" onClick={onClose}>
       <div className="time-travel-modal-box connected-history-box" onClick={(e) => e.stopPropagation()}>
         <div className="mobile-sheet-handle" />
-        {/* Modal Header */}
-        <div className="modal-header">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: isUserCurrentLocation ? 'linear-gradient(135deg, #1f7a8c, #09bc8a)' : 'linear-gradient(135deg, #b24a3b, #d4a359)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', boxShadow: '0 0 15px rgba(212, 163, 89, 0.3)' }}>
-              {isUserCurrentLocation ? <Navigation size={20} /> : <History size={20} />}
-            </div>
-
-            <div>
-              <div style={{ fontSize: '11px', color: '#d4a359', letterSpacing: '0.08em', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '6px' }}>
+        {/* Responsive Antique Modal Header */}
+        <div className="modal-header connected-modal-header">
+          <div className="connected-header-top-row">
+            <div className="connected-header-badge-group">
+              <div className="connected-header-icon-badge" style={{ background: isUserCurrentLocation ? 'linear-gradient(135deg, #1f7a8c, #09bc8a)' : 'linear-gradient(135deg, #b24a3b, #d4a359)' }}>
+                {isUserCurrentLocation ? <Navigation size={18} /> : <History size={18} />}
+              </div>
+              <div className="connected-header-sub-label">
                 {isUserCurrentLocation ? (
                   <span style={{ color: '#95d5b2', fontWeight: 600 }}>
-                    📍 Live GPS: {userLocation?.name || 'Your Location'} ({userCoords ? `${userCoords.lat.toFixed(3)}, ${userCoords.lng.toFixed(3)}` : 'Detected'})
+                    📍 Live GPS: {userLocation?.name || 'Your Location'}
                   </span>
                 ) : (
                   <span>Connected Historical Stratigraphy</span>
                 )}
               </div>
+            </div>
 
-              <h2 style={{ fontSize: '1.35rem', color: '#fff', margin: '2px 0 0 0', lineHeight: 1.2 }}>
-                {isUserCurrentLocation && isFarFromDirectSite 
-                  ? `Regional Heritage Near ${userLocation?.name || 'You'}`
-                  : place.name}
-              </h2>
+            <div className="connected-header-actions">
+              {onOpenAudioGuide && (
+                <button
+                  type="button"
+                  onClick={() => onOpenAudioGuide(place)}
+                  className="connected-header-pill pill-audio"
+                  title="Open Bilingual Audio Heritage Guide"
+                >
+                  <Volume2 size={13} />
+                  <span>Audio Tour</span>
+                </button>
+              )}
+
+              {onOpenShareCard && (
+                <button
+                  type="button"
+                  onClick={() => onOpenShareCard(place)}
+                  className="connected-header-pill pill-share"
+                  title="Generate 1080x1080 Social Share Card"
+                >
+                  <Sparkles size={13} />
+                  <span>Share Card</span>
+                </button>
+              )}
+
+              <button className="drawer-close-btn" onClick={onClose} aria-label="Close history modal">
+                <X size={18} />
+              </button>
             </div>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            {onOpenAudioGuide && (
-              <button
-                type="button"
-                onClick={() => onOpenAudioGuide(place)}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '5px',
-                  padding: '5px 10px',
-                  borderRadius: '999px',
-                  background: 'rgba(212, 149, 43, 0.15)',
-                  border: '1px solid rgba(212, 149, 43, 0.4)',
-                  color: '#ffd166',
-                  fontSize: '11px',
-                  fontWeight: 600,
-                  cursor: 'pointer'
-                }}
-                title="Open Bilingual Audio Heritage Guide"
-              >
-                <Volume2 size={13} />
-                <span>Audio Tour</span>
-              </button>
-            )}
-
-            {onOpenShareCard && (
-              <button
-                type="button"
-                onClick={() => onOpenShareCard(place)}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '5px',
-                  padding: '5px 10px',
-                  borderRadius: '999px',
-                  background: 'rgba(143, 29, 29, 0.25)',
-                  border: '1px solid rgba(143, 29, 29, 0.5)',
-                  color: '#ffccd5',
-                  fontSize: '11px',
-                  fontWeight: 600,
-                  cursor: 'pointer'
-                }}
-                title="Generate 1080x1080 Social Share Card"
-              >
-                <Sparkles size={13} />
-                <span>Share Card</span>
-              </button>
-            )}
-
-            <button className="drawer-close-btn" onClick={onClose} aria-label="Close history modal">
-              <X size={18} />
-            </button>
-          </div>
+          <h2 className="connected-modal-title">
+            {isUserCurrentLocation && isFarFromDirectSite 
+              ? `Regional Heritage Near ${userLocation?.name || 'You'}`
+              : place.name}
+          </h2>
         </div>
 
         {/* Tab Navigation Strip */}
@@ -536,56 +513,207 @@ export const PlaceConnectedHistoryModal = ({
                 </div>
               </div>
 
-              {/* Location Heritage Banner */}
-              <div style={{ position: 'relative', height: '180px', borderRadius: '8px', overflow: 'hidden', border: '1px solid rgba(212, 163, 89, 0.3)' }}>
-                <img src={place.image} alt={place.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(15,14,12,0.95) 100%)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '14px' }}>
-                  <div style={{ fontFamily: "'Noto Sans Tamil'", fontSize: '1.2rem', color: '#ffd166', fontWeight: 600 }}>
-                    {place.tamilName}
-                  </div>
-                  <div style={{ fontSize: '0.85rem', color: '#e5ded5', marginTop: '2px' }}>
-                    Classical Identity: <b style={{ color: '#ffd166' }}>{place.classicalName}</b> • District: {place.district}
-                  </div>
-                  {place.imageAttribution && (
-                    <div style={{ fontSize: '10px', color: '#aaa', marginTop: '2px' }}>
-                      📷 {place.imageAttribution}
+              {/* Location Heritage Banner & Multi-Photo Showcase */}
+              {(() => {
+                const photos = (place.gallery && place.gallery.length > 0)
+                  ? place.gallery
+                  : [{ url: place.image, title: place.name, caption: place.imageAttribution || place.name }];
+                const currentPhoto = photos[activePhotoIdx] || photos[0];
+
+                return (
+                  <div className="monument-gallery-container">
+                    <div className="monument-main-banner">
+                      <img 
+                        src={currentPhoto.url} 
+                        alt={currentPhoto.title || place.name} 
+                        className="monument-banner-img" 
+                      />
+                      <div className="monument-banner-overlay">
+                        <div className="monument-banner-top-badge">
+                          <span>📷 Real-World Photography</span>
+                          {photos.length > 1 && (
+                            <span className="photo-counter-badge">
+                              {activePhotoIdx + 1} of {photos.length} Views
+                            </span>
+                          )}
+                        </div>
+
+                        <div className="monument-banner-bottom">
+                          <div className="monument-tamil-title">
+                            {place.tamilName}
+                          </div>
+                          <div className="monument-banner-meta">
+                            <span>Classical Identity: <strong style={{ color: '#ffd166' }}>{place.classicalName}</strong></span>
+                            <span>•</span>
+                            <span>District: <strong>{place.district}</strong></span>
+                          </div>
+                          {currentPhoto.caption && (
+                            <div className="monument-banner-caption">
+                              🔎 <em>{currentPhoto.caption}</em>
+                            </div>
+                          )}
+                        </div>
+                      </div>
                     </div>
-                  )}
+
+                    {/* Interactive Thumbnail Carousel */}
+                    {photos.length > 1 && (
+                      <div className="monument-thumb-row" role="tablist" aria-label="Monument Photo Angles">
+                        {photos.map((item, pIdx) => {
+                          const isActive = activePhotoIdx === pIdx;
+                          return (
+                            <button
+                              key={pIdx}
+                              type="button"
+                              onClick={() => setActivePhotoIdx(pIdx)}
+                              className={`monument-thumb-btn ${isActive ? 'active' : ''}`}
+                              title={item.title}
+                            >
+                              <img src={item.url} alt={item.title} className="monument-thumb-img" />
+                              <div className="monument-thumb-label">{item.title}</div>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                );
+              })()}
+
+              {/* Visual Metric Stat Chips */}
+              <div className="monument-stat-chips-grid">
+                <div className="monument-stat-chip">
+                  <div className="stat-chip-icon">🏛️</div>
+                  <div className="stat-chip-content">
+                    <div className="stat-chip-label">Style & Architecture</div>
+                    <div className="stat-chip-val">
+                      {place.categories?.[0] ? place.categories[0].charAt(0).toUpperCase() + place.categories[0].slice(1) : 'Dravidian Architecture'}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="monument-stat-chip">
+                  <div className="stat-chip-icon">👑</div>
+                  <div className="stat-chip-content">
+                    <div className="stat-chip-label">Royal Patron / Dynasty</div>
+                    <div className="stat-chip-val">
+                      {place.connectedPolities?.[0]?.dynasty || place.dynasties?.[0] || 'Imperial Dynasty'}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="monument-stat-chip">
+                  <div className="stat-chip-icon">📅</div>
+                  <div className="stat-chip-content">
+                    <div className="stat-chip-label">Historical Epoch</div>
+                    <div className="stat-chip-val">
+                      {place.period || (place.historicalEvents?.[0]?.year ? `${place.historicalEvents[0].year}` : 'Classical Era')}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="monument-stat-chip">
+                  <div className="stat-chip-icon">📍</div>
+                  <div className="stat-chip-content">
+                    <div className="stat-chip-label">District & Region</div>
+                    <div className="stat-chip-val">{place.district || 'Tamilakam'}</div>
+                  </div>
                 </div>
               </div>
 
-              {/* Why It Matters */}
-              <div style={{ background: '#191612', border: '1px solid var(--bg-dark-border)', borderRadius: '8px', padding: '1rem' }}>
-                <div style={{ fontSize: '11px', color: '#d4a359', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600, marginBottom: '6px' }}>
-                  Historical Significance & Heritage Core
+              {/* Punchy 2-Sentence Historical Takeaway Card */}
+              <div className="monument-punchy-takeaway-card">
+                <div className="takeaway-header">
+                  <Sparkles size={13} color="#ffd166" />
+                  <span>HERITAGE ESSENCE • வரலாற்றுச் சுருக்கம்</span>
                 </div>
-                <p style={{ fontSize: '0.92rem', color: '#f5f2eb', lineHeight: '1.6' }}>
-                  {place.whyItMatters}
+                <p className="takeaway-text">
+                  {place.whyItMatters ? (
+                    place.whyItMatters.length > 220 
+                      ? place.whyItMatters.split('. ').slice(0, 2).join('. ') + '.'
+                      : place.whyItMatters
+                  ) : place.shortDescription}
                 </p>
               </div>
 
               {/* Video & Media Showcase Section (Section 24) */}
               <div style={{ background: '#191612', border: '1px solid rgba(212, 163, 89, 0.25)', borderRadius: '8px', padding: '14px 16px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px', flexWrap: 'wrap', gap: '6px' }}>
                   <div style={{ fontSize: '11px', color: '#d4a359', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '6px' }}>
                     <Video size={13} />
                     <span>Documentary & Visual Survey (Section 24)</span>
                   </div>
-                  <span style={{ fontSize: '10px', color: '#95d5b2', background: 'rgba(9, 188, 138, 0.15)', padding: '2px 8px', borderRadius: '4px' }}>
-                    Verified Media Archive
-                  </span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    {place.videoChannel && (
+                      <span style={{ fontSize: '10px', color: '#ffd166', background: 'rgba(212, 163, 89, 0.15)', border: '1px solid rgba(212, 163, 89, 0.3)', padding: '2px 8px', borderRadius: '4px' }}>
+                        📺 {place.videoChannel}
+                      </span>
+                    )}
+                    <span style={{ fontSize: '10px', color: '#95d5b2', background: 'rgba(9, 188, 138, 0.15)', padding: '2px 8px', borderRadius: '4px' }}>
+                      Verified Media Archive
+                    </span>
+                  </div>
                 </div>
+
+                {place.videoTitle && (
+                  <div style={{ fontSize: '0.92rem', color: '#f5f2eb', fontWeight: 600, marginBottom: '6px', lineHeight: 1.35 }}>
+                    {place.videoTitle}
+                  </div>
+                )}
+
                 <p style={{ fontSize: '0.85rem', color: '#ccc', margin: '0 0 10px 0', lineHeight: 1.4 }}>
                   Archaeological and architectural walkthrough video documenting the stratified monument features, plinths, and inscriptions of {place.name}.
                 </p>
-                <div style={{ position: 'relative', width: '100%', height: '190px', borderRadius: '6px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', background: '#0a0908' }}>
+
+                <div style={{ position: 'relative', width: '100%', height: '220px', borderRadius: '6px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', background: '#0a0908' }}>
                   <iframe 
-                    src={place.videoUrl || "https://www.youtube.com/embed/dQw4w9WgXcQ"} 
-                    title={`${place.name} Video Guide`}
+                    src={place.videoUrl || "https://www.youtube.com/embed/uGHfjT_ny8Q"} 
+                    title={place.videoTitle || `${place.name} Video Guide`}
                     style={{ width: '100%', height: '100%', border: 'none' }}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
                     allowFullScreen
                   />
+                </div>
+
+                {/* Direct Interlink Bar */}
+                <div style={{ marginTop: '10px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px', paddingTop: '8px', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+                  <div style={{ fontSize: '11px', color: '#aaa', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                    <span style={{ color: '#ffd166' }}>📍</span>
+                    <span>Curated visual survey for <b>{place.name.split(' (')[0]}</b></span>
+                  </div>
+                  <a 
+                    href={place.videoWatchUrl || place.videoUrl?.replace('/embed/', '/watch?v=') || `https://www.youtube.com/results?search_query=${encodeURIComponent(place.name + ' documentary')}`} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(185, 28, 28, 0.35))',
+                      border: '1px solid rgba(239, 68, 68, 0.6)',
+                      color: '#fca5a5',
+                      padding: '4px 12px',
+                      borderRadius: '6px',
+                      fontSize: '11.5px',
+                      fontWeight: 600,
+                      textDecoration: 'none',
+                      transition: 'all 0.2s ease',
+                      cursor: 'pointer'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'rgba(239, 68, 68, 0.4)';
+                      e.currentTarget.style.color = '#fff';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(185, 28, 28, 0.35))';
+                      e.currentTarget.style.color = '#fca5a5';
+                    }}
+                    title={`Open full documentary for ${place.name} on YouTube`}
+                  >
+                    <span>▶ Watch on YouTube</span>
+                    <ExternalLink size={12} />
+                  </a>
                 </div>
               </div>
 
@@ -614,6 +742,35 @@ export const PlaceConnectedHistoryModal = ({
                   </div>
                 </div>
               </div>
+
+              {/* Collapsible Scholarly Details & Epigraphical Citations Accordion */}
+              <details className="scholarly-details-accordion">
+                <summary className="scholarly-accordion-summary">
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <BookOpen size={14} color="#d4a359" />
+                    <span style={{ fontWeight: 600 }}>Scholarly Epigraphy, Full Narrative & ASI Records</span>
+                  </div>
+                  <ChevronDown size={14} className="accordion-chevron" />
+                </summary>
+                <div className="scholarly-accordion-body">
+                  <div style={{ fontSize: '11px', color: '#ffd166', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600, marginBottom: '6px' }}>
+                    Complete Historical Narrative & Stratigraphy
+                  </div>
+                  <p style={{ fontSize: '0.88rem', color: '#f5f2eb', lineHeight: '1.6', margin: '0 0 10px 0' }}>
+                    {place.whyItMatters}
+                  </p>
+                  {place.fullStory && (
+                    <p style={{ fontSize: '0.84rem', color: '#ccc', lineHeight: '1.55', margin: 0 }}>
+                      {place.fullStory}
+                    </p>
+                  )}
+                  {place.historicalContext && (
+                    <div style={{ marginTop: '10px', paddingTop: '10px', borderTop: '1px solid rgba(212, 163, 89, 0.2)', fontSize: '0.82rem', color: '#bbb' }}>
+                      <strong style={{ color: '#ffd166' }}>Contextual Record: </strong>{place.historicalContext}
+                    </div>
+                  )}
+                </div>
+              </details>
 
               {/* Stratigraphy Across Periods */}
               {place.whatWasHere && (

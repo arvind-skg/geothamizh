@@ -127,7 +127,23 @@ export const SearchFilterPanel = ({
                       key={place.id}
                       className={`city-directory-item ${isSelected ? 'selected' : ''}`}
                       onClick={() => onSelectPlace(place)}
+                      title={`Explore ${place.name}`}
                     >
+                      {place.image ? (
+                        <div className="city-item-thumb-wrap">
+                          <img 
+                            src={place.image} 
+                            alt={place.name} 
+                            className="city-item-thumb" 
+                            loading="lazy" 
+                          />
+                        </div>
+                      ) : (
+                        <div className="city-item-thumb-placeholder">
+                          <Landmark size={16} color="#d4a359" />
+                        </div>
+                      )}
+
                       <div className="city-item-main">
                         <div className="city-item-name-row">
                           <span className="city-item-name">{place.name}</span>

@@ -15,12 +15,32 @@ export const PLACES = [
     periods: ['pre_sangam', 'sangam', 'post_sangam', 'medieval', 'later'],
     categories: ['heritage', 'temples', 'ancient_cities', 'literature', 'food_culture'],
     image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=80',
-    imageAttribution: 'Meenakshi Amman Temple Gopuram (Wikimedia Commons / Unsplash)',
+    imageAttribution: 'Meenakshi Amman Temple South Gopuram, Madurai',
+    gallery: [
+      {
+            url: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=80',
+            title: 'Meenakshi Amman Gopuram',
+            caption: 'Towering multi-tiered south gopuram with polychrome sculptures'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
+            title: 'Tirumalai Nayak Palace',
+            caption: 'Grand 17th-century Indo-Saracenic durbar hall with 82-foot stucco pillars'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
+            title: 'Thousand Pillar Hall',
+            caption: 'Carved granite pillars depicting mythical Yali beasts and celestial musicians'
+      }
+],
     shortDescription: 'One of the oldest continuously inhabited cities in South Asia, famed as the seat of the Tamil Sangam academies and the majestic Meenakshi Temple.',
     whyItMatters: 'Madurai is the spiritual and literary heart of Tamil civilization. It nurtured the ancient Tamil Sangams where poets gathered to compile classical verse, survived centuries of dynastic glory under the Pandyas and Nayakas, and remains vibrant today.',
     fullStory: 'Madurai was laid out in the shape of a blooming lotus radiating outward from the Meenakshi Sundareswarar temple complex. Documented by Megasthenes in the 3rd century BCE as Methora, it was praised in the Sangam anthologies Mathuraikkanci and Silappadikaram. In the 16th and 17th centuries, Tirumalai Nayak transformed the city with grand pillared halls and the famous Tirumalai Nayak Mahal.',
     audioNarration: 'Welcome to Madurai, ancient Koodal. For over two millennia, this sacred city on the Vaigai river has echoed with the verses of Tamil poets and the bells of Meenakshi Temple. Notice the concentric streets designed like lotus petals, reflecting ancient urban planning described in the Sangam epic Silappadikaram.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Placeholder or educational link
+    videoUrl: 'https://www.youtube.com/embed/uGHfjT_ny8Q',
+    videoWatchUrl: 'https://www.youtube.com/watch?v=uGHfjT_ny8Q',
+    videoTitle: 'Meenakshi Amman & The Marvel of Madurai | Full Episode | English',
+    videoChannel: 'HISTORY TV18',
     
     historicalNamesChronology: [
       { era: 'Pre-Sangam & Sangam', name: 'Koodal (கூடல்) / Naanmadakoodal', meaning: 'The Assembly / Junction of Rivers', source: 'Mathuraikkanci, Silappadikaram' },
@@ -84,13 +104,33 @@ export const PLACES = [
     zoomTier: 'macro', // Section 26: Macro view
     periods: ['medieval', 'later'],
     categories: ['heritage', 'temples', 'ancient_cities', 'crafts', 'monuments'],
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
-    imageAttribution: 'Brihadisvara Temple Tower (UNESCO World Heritage Site / Wikimedia Commons)',
+    image: 'https://images.unsplash.com/photo-1609766857041-ed402ea8069a?auto=format&fit=crop&w=1200&q=80',
+    imageAttribution: 'Brihadisvara Temple 216-ft Vimana, Thanjavur',
+    gallery: [
+      {
+            url: 'https://images.unsplash.com/photo-1609766857041-ed402ea8069a?auto=format&fit=crop&w=1200&q=80',
+            title: 'Big Temple Vimana (216 feet)',
+            caption: 'Monolithic granite capstone (Kumbam) weighing 80 tonnes crowning the sanctum'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
+            title: 'Monolithic Nandi Mandapam',
+            caption: 'Single block 25-tonne granite Nandi facing the main sanctum'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=80',
+            title: 'Royal Inscription Plinths',
+            caption: 'Detailed stone Tamil inscriptions recording gifts, land revenues, and temple dancers by Rajaraja I'
+      }
+],
     shortDescription: 'The majestic imperial capital of the Cholas, crowned by the colossal all-granite Brihadisvara Temple built in 1010 CE by Emperor Rajaraja I.',
     whyItMatters: 'Thanjavur showcases the absolute zenith of Dravidian architecture, bronze metallurgy, and hydraulic engineering. Its temple walls preserve South Asia’s most detailed epigraphical administrative records.',
     fullStory: 'Under Rajaraja Chola I, Thanjavur was transformed into the nerve center of an empire that controlled maritime trade across the Bay of Bengal. The Brihadisvara Temple (Peruvudaiyar Kovil) features a 216-foot vimana topped by an 80-ton single granite capstone. In later centuries, the Nayaka and Maratha kings endowed the Saraswathi Mahal Library.',
     audioNarration: 'Look up at the soaring 216-foot granite vimana of Brihadisvara Temple. Over one thousand years ago, Emperor Rajaraja Chola I moved mountains of stone across the Kaveri plains to erect this temple. Read the stone plinth—every officer, dancer, and donation is recorded in stone for eternity.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/EY5jCYsd2js',
+    videoWatchUrl: 'https://www.youtube.com/watch?v=EY5jCYsd2js',
+    videoTitle: 'Brihadeshwara Temple | Documentary | Temples Of India',
+    videoChannel: 'Prasar Bharati Archives',
     
     historicalNamesChronology: [
       { era: 'Chola Imperial Era (c. 850–1279 CE)', name: 'Thanjavur (தஞ்சாவூர்)', meaning: 'Named after mythical chieftain Thanjan / Asylum city', source: 'Chola Inscriptions' },
@@ -145,13 +185,28 @@ export const PLACES = [
     zoomTier: 'macro', // Section 26: Macro view (Foundational site)
     periods: ['pre_sangam', 'sangam'],
     categories: ['archaeology', 'ancient_cities', 'inscriptions', 'heritage'],
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
-    imageAttribution: 'Keeladi Brick Structures & Pottery (TN State Dept of Archaeology / Wikimedia)',
+    image: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80',
+    imageAttribution: 'Keeladi Archaeological Excavation Site, Vaigai Valley',
+    gallery: [
+      {
+            url: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80',
+            title: 'Archaeological Excavation Trenches',
+            caption: 'Urban brick conduits and wells along the Vaigai river basin dating to 6th Century BCE'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80',
+            title: 'Inscribed Tamil-Brahmi Pottery Layer',
+            caption: 'Pottery sherds inscribed with Sangam Tamil personal names like Aadhan and Kudhirai'
+      }
+],
     shortDescription: 'Breakthrough ancient urban river civilization dated to 6th century BCE, proving literate urban culture contemporary to the Gangetic valley.',
     whyItMatters: 'Accelerator Mass Spectrometry (AMS) carbon dating has pushed the antiquity of the Sangam era and Tamil-Brahmi literacy to the 6th century BCE (580 BCE), fundamentally rewriting the history of South India.',
     fullStory: 'Excavations by the Tamil Nadu State Department of Archaeology at Keeladi have unearthed well-planned brick structures, drainage channels, ring wells, carnelian beads, spinning wheels, gaming pieces, and over 1,000 potsherds inscribed with Tamil-Brahmi personal names such as Aathan, Udhiran, and Thisan.',
     audioNarration: 'You are standing at Keeladi on the banks of the Vaigai river. Carbon dating from here proves that over 2,600 years ago, everyday people were writing their names in Tamil-Brahmi script on pottery and living in sophisticated brick-built cities with covered drainage systems.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/D9mO5MDmy1M',
+    videoWatchUrl: 'https://www.youtube.com/watch?v=D9mO5MDmy1M',
+    videoTitle: 'Inside Keeladi: The ancient Indian site revealing the past | BBC News India',
+    videoChannel: 'BBC News India',
     
     historicalNamesChronology: [
       { era: 'Pre-Sangam (6th c. BCE)', name: 'Vaigai River Metropolis (பெயரறியா தொல்நகரம்)', meaning: 'Ancient Urban Industrial Hub', source: 'Carbon Dating & Stratigraphy' },
@@ -205,13 +260,28 @@ export const PLACES = [
     zoomTier: 'macro', // Section 26: Macro view (Ancient Port)
     periods: ['pre_sangam', 'sangam'],
     categories: ['ancient_cities', 'archaeology', 'heritage', 'inscriptions'],
-    image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80',
-    imageAttribution: 'Gulf of Mannar Sea Shore & Ancient Pearl Fishery Region (Wikimedia Commons)',
+    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+    imageAttribution: 'Gulf of Mannar Ancient Pearl Fishery Coast, Korkai',
+    gallery: [
+      {
+            url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+            title: 'Pandyan Pearl Fishery Coast',
+            caption: 'Ancient Gulf of Mannar pearl fishing haven celebrated by Megasthenes and Ptolemy'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1200&q=80',
+            title: 'Excavated Korkai Brick Basin',
+            caption: 'Archaeological remains of ancient dockyards and pearl sorting platforms'
+      }
+],
     shortDescription: 'The celebrated primary seaport and secondary capital of the Early Pandyas, renowned throughout the ancient Mediterranean world for natural pearls.',
     whyItMatters: 'Recorded by Greek geographers Ptolemy and Strabo as Kolkhoi, Korkai was the center of pearl diving and international trade in the Gulf of Mannar, referenced across numerous Sangam anthologies.',
     fullStory: 'Excavations by the Tamil Nadu State Archaeology Department revealed thousands of pearl oyster shells, Roman black-slipped amphora sherds, charcoal layers, ring wells, and Tamil-Brahmi inscribed potsherds.',
     audioNarration: 'You are at Korkai, the ancient pearl capital of the Pandya kings. In the Sangam era, brave pearl divers plunged deep into the Gulf of Mannar to retrieve pearls prized by queens from Rome to Alexandria.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/aKxslsKeOc4',
+    videoWatchUrl: 'https://www.youtube.com/watch?v=aKxslsKeOc4',
+    videoTitle: 'Unveiling Korkai: Tamil Nadu\'s Ancient Pandyan Port Excavation',
+    videoChannel: 'kakarot_Ae',
     
     historicalNamesChronology: [
       { era: 'Sangam & Early Iron Age', name: 'Korkai (கொற்கை)', meaning: 'Pearl Emporium of the Southern Seas', source: 'Akananooru, Porunararruppadai' },
@@ -264,13 +334,28 @@ export const PLACES = [
     zoomTier: 'macro', // Section 26: Macro view (Ancient Port)
     periods: ['sangam', 'post_sangam'],
     categories: ['ancient_cities', 'literature', 'archaeology', 'heritage'],
-    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
-    imageAttribution: 'Poompuhar Shore where Kaveri meets the Bay of Bengal (Wikimedia Commons)',
+    image: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1200&q=80',
+    imageAttribution: 'Silappadikaram Coast & Maritime Estuary, Poompuhar',
+    gallery: [
+      {
+            url: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1200&q=80',
+            title: 'Silappadikaram Art Memorial',
+            caption: 'Sculptural monument celebrating Kovalan, Kannagi, and the ancient Chola port'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+            title: 'Kaveri Estuary at Poompuhar',
+            caption: 'Where the sacred Kaveri merges with the Bay of Bengal, site of ancient submerged wharves'
+      }
+],
     shortDescription: 'The legendary Sangam seaport of the Cholas and the setting of the epic Silappadikaram, where the Kaveri river enters the ocean.',
     whyItMatters: 'Detailed in Pattinappaalai and Silappadikaram as an international emporium where Yavanas (Greeks/Romans), Chinese, and islanders lived together in dedicated mercantile quarters.',
     fullStory: 'Marine archaeological surveys off the coast of Poompuhar have discovered submerged brick structures, ring wells, and wharf-like features dating to the Sangam era. The city was divided into Maruvurpakkam (coastal port quarter) and Pattinappakkam (royal residential city), separated by a wide market square.',
     audioNarration: 'Here where the sacred Kaveri merges into the Bay of Bengal stood Kaveripattinam. As sung in the epic Silappadikaram, ships arrived day and night carrying horses from Arabia, gold from the north, and gemstones from Sri Lanka.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/HT7Wm5hZKhs',
+    videoWatchUrl: 'https://www.youtube.com/watch?v=HT7Wm5hZKhs',
+    videoTitle: 'POOMPUHAR: The Lost Tamil City Underwater | Ancient Chola Maritime Capital',
+    videoChannel: 'Tamil Decodex',
     
     historicalNamesChronology: [
       { era: 'Sangam Era', name: 'Kaveripoompattinam / Puhar (பூம்புகார்)', meaning: 'Floral Estuary of Kaveri', source: 'Pattinappaalai, Silappadikaram' },
@@ -322,12 +407,32 @@ export const PLACES = [
     periods: ['sangam', 'medieval'],
     categories: ['heritage', 'temples', 'monuments', 'ancient_cities', 'crafts'],
     image: 'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=1200&q=80',
-    imageAttribution: 'Mamallapuram Shore Temple against the Bay of Bengal (Unsplash)',
+    imageAttribution: 'UNESCO Shore Temple, Mamallapuram',
+    gallery: [
+      {
+            url: 'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=1200&q=80',
+            title: 'Shore Temple by the Sea',
+            caption: '8th-century structural granite temple built by Rajasimha Pallava'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=1200&q=80',
+            title: 'Pancha Rathas Monoliths',
+            caption: 'Five monolithic rock-cut chariots sculpted out of a single granite outcropping'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
+            title: 'Descent of the Ganges (Arjuna’s Penance)',
+            caption: 'Massive open-air bas relief with life-sized elephants and celestial ascetics'
+      }
+],
     shortDescription: 'The ancient maritime port of the Pallavas, celebrated for its 7th-century rock-cut monolithic rathas and the open-air relief of Arjuna’s Penance.',
     whyItMatters: 'A UNESCO World Heritage sanctuary where rock architecture transitioned from cave excavating to structural granite temples, serving as the departure harbor for Pallava voyages to Southeast Asia.',
     fullStory: 'Named after the Pallava king Narasimhavarman I (Mamalla), Kadalmallai was praised by poet Thirumangai Alvar for its ships heavy with spices and gold. The Shore Temple built by Rajasimha Pallava withstands the crashing waves of the Bay of Bengal.',
     audioNarration: 'Here at Mamallapuram, rock meets the ocean. In the 7th century, master sculptors under the Pallava monarchs transformed natural granite boulders into living open-air galleries, depicting elephants, celestial beings, and the epic descent of the sacred river.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/Ly0LZ49G8vk',
+    videoWatchUrl: 'https://www.youtube.com/watch?v=Ly0LZ49G8vk',
+    videoTitle: 'The Submerged Temple of Mahabalipuram – A Legendary Shore Monument',
+    videoChannel: 'The Knowledge Vault',
     
     historicalNamesChronology: [
       { era: 'Sangam Era', name: 'Nirppeyarru (நீர்ப்பெயற்று)', meaning: 'Great Maritime Harbor with Light Beacons', source: 'Perumbanarruppadai' },
@@ -379,12 +484,27 @@ export const PLACES = [
     periods: ['sangam', 'post_sangam', 'medieval', 'later'],
     categories: ['heritage', 'temples', 'ancient_cities', 'crafts', 'literature'],
     image: 'https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=1200&q=80',
-    imageAttribution: 'Ekambareswarar Temple Gopuram (Wikimedia Commons)',
+    imageAttribution: 'Kailasanathar Temple Sandstone Sanctum, Kanchipuram',
+    gallery: [
+      {
+            url: 'https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=1200&q=80',
+            title: 'Kailasanathar Temple',
+            caption: 'Oldest surviving structural stone temple in Tamil Nadu, built by Rajasimha Pallava'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=80',
+            title: 'Ekambareswarar Raja Gopuram',
+            caption: '192-foot soaring gateway gopuram commissioned by Krishnadevaraya'
+      }
+],
     shortDescription: 'One of India\'s seven sacred mokshapuri cities, imperial capital of the Pallavas, and the historic center of pure mulberry silk weaving.',
     whyItMatters: 'A premier educational and religious center of ancient India where Hinduism, Buddhism, and Jainism flourished simultaneously; birthplace of Bodhidharma and home of master philosopher Ramanuja.',
     fullStory: 'Celebrated by Sanskrit poet Kalidasa as "the city among cities" (Nagareshu Kanchi), Kanchipuram is home to the sandstone Kailasanathar Temple, the massive 192-foot Ekambareswarar gopuram, and centuries of world-renowned silk handloom traditions.',
     audioNarration: 'Welcome to Kanchipuram, ancient Kanchi. Here lived scholars, monks, and master weavers side by side. From these temples, Buddhist masters like Bodhidharma journeyed north to China, while royal weavers interlaced fine mulberry silk with pure gold zari threads.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/HfBPNJkRvRA',
+    videoWatchUrl: 'https://www.youtube.com/watch?v=HfBPNJkRvRA',
+    videoTitle: 'Kailasanathar Temple Kanchipuram | History, Architecture & Pallava Era Shiva Temple Guide',
+    videoChannel: 'Tamil Nadu Tourism Vlog',
     
     historicalNamesChronology: [
       { era: 'Sangam Era', name: 'Kanchi (காஞ்சி)', meaning: 'City of Golden Girdle', source: 'Perumbanarruppadai' },
@@ -437,12 +557,27 @@ export const PLACES = [
     periods: ['sangam', 'post_sangam', 'medieval', 'later'],
     categories: ['heritage', 'temples', 'ancient_cities', 'literature'],
     image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=80',
-    imageAttribution: 'Kapaleeshwarar Temple Gopuram Mylapore (Wikimedia Commons)',
+    imageAttribution: 'Kapaleeshwarar Temple Gopuram, Mylapore, Chennai',
+    gallery: [
+      {
+            url: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=80',
+            title: 'Kapaleeshwarar Temple',
+            caption: 'Classic 7th-century Saivite center praised in Tevaram hymns by Sambandar'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=80',
+            title: 'Valluvar Kottam Chariot Memorial',
+            caption: '128-foot monolithic stone temple car honoring sage-poet Thiruvalluvar'
+      }
+],
     shortDescription: 'Ancient maritime harbor city of Mayilai, celebrated in Sangam verses, the birthplace of saint-philosopher Thiruvalluvar and home of Kapaleeshwarar Temple.',
     whyItMatters: 'Recorded by Greek geographer Ptolemy as Mylarphon, Mylapore was a bustling Pallava seaport praised by 7th-century Saivite saint Sambandar in the Thevaram hymns.',
     fullStory: 'Long before modern Chennai was founded in 1639, Mylapore, Triplicane, and Pallavaram were thriving ancient centers. Thiruvalluvar lived here and composed the immortal Thirukkural.',
     audioNarration: 'Welcome to Chennai and ancient Mylapore. Two thousand years ago, Roman ships dropped anchor along this shoreline. It is here that Thiruvalluvar penned the universal ethics of Thirukkural.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/VlnhSQSDCi0',
+    videoWatchUrl: 'https://www.youtube.com/watch?v=VlnhSQSDCi0',
+    videoTitle: 'A walk through ancient Mylapore | Indic Trails',
+    videoChannel: 'The Lede',
     
     historicalNamesChronology: [
       { era: 'Greek & Roman (c. 140 CE)', name: 'Mylarphon (Μυλαρφόων)', meaning: 'City of Peacocks', source: 'Ptolemy Geography' },
@@ -494,13 +629,28 @@ export const PLACES = [
     zoomTier: 'detailed', // Section 26: Detailed view (Rock Caves / Epigraphy)
     periods: ['pre_sangam', 'sangam'],
     categories: ['inscriptions', 'archaeology', 'heritage'],
-    image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80',
-    imageAttribution: 'Mangulam Granite Hill & Caverns (Archaeological Survey of India)',
+    image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80',
+    imageAttribution: 'Mangulam Ovamalai Caverns & Earliest Tamil-Brahmi Epigraphs',
+    gallery: [
+      {
+            url: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80',
+            title: 'Tamil-Brahmi Epigraph Site',
+            caption: 'Mentioning Pandyan king Neduncheziyan gifting rock shelters to Jain ascetics'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80',
+            title: 'Ovamalai Cavern Beds',
+            caption: 'Smooth stone beds chiseled for monks meditating in secluded isolation'
+      }
+],
     shortDescription: 'Granite caverns preserving the earliest deciphered Tamil-Brahmi rock inscriptions in Tamil Nadu, dating to the 3rd–2nd century BCE.',
     whyItMatters: 'Direct epigraphical proof of early Pandyan King Neduncheziyan and written Tamil literacy contemporary to Emperor Ashoka in northern India.',
     fullStory: 'Located on Ovamalai hill near Madurai, the natural rock shelters feature stone beds cut for Jain monks. Inscriptions carved along the drip ledges explicitly mention King Neduncheziyan gifting the retreat to Jain ascetic Kani Nanthasiri.',
     audioNarration: 'Look closely at the granite rock face at Mangulam. Over 2,200 years ago, stonecutters chiseled these letters in ancient Tamil-Brahmi script under the orders of Pandyan King Neduncheziyan to record his gift to meditating Jain ascetics.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/QxohL7DAWT0',
+    videoWatchUrl: 'https://www.youtube.com/watch?v=QxohL7DAWT0',
+    videoTitle: 'The Mangulam Inscriptions | Earliest Tamil-Brahmi Caverns',
+    videoChannel: 'Storytrails',
     historicalNamesChronology: [
       { era: 'Sangam Era', name: 'Ovamalai Caverns (ஓவாமலை)', meaning: 'Silent Mountain Sanctuary', source: 'ASI Epigraphia Indica' }
     ],
@@ -550,13 +700,28 @@ export const PLACES = [
     zoomTier: 'regional', // Section 26: Regional view
     periods: ['sangam', 'post_sangam', 'medieval'],
     categories: ['heritage', 'archaeology', 'monuments', 'inscriptions', 'crafts'],
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
-    imageAttribution: 'Sittanavasal Cave Lotus Tank Fresco (ASI / Wikimedia Commons)',
+    image: 'https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=1200&q=80',
+    imageAttribution: 'Sittanavasal Jain Lotus Pond Mural Cave, Pudukkottai',
+    gallery: [
+      {
+            url: 'https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=1200&q=80',
+            title: 'Lotus Pond Fresco',
+            caption: 'Masterpiece of ancient Indian painting depicting monks gathering lotuses among fish and elephants'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80',
+            title: 'Arivar Koil Rock-Cut Cave',
+            caption: 'Monolithic cave temple excavated on the granite cliffside'
+      }
+],
     shortDescription: '2nd-century BCE Jain monastic complex famous for natural cavern beds and exquisite 9th-century Pandyan vegetable-dye fresco paintings of a lotus pond.',
     whyItMatters: 'Preserves the finest surviving early medieval fresco paintings in South India outside Ajanta, along with Tamil-Brahmi inscriptions of ascetic Sallekhana vows.',
     fullStory: 'The Arivar Kovil rock-cut shrine contains brilliant mineral and vegetable-dye frescoes depicting a lotus pond filled with blooming flowers, fish, geese, elephants, and devotees gathering blossoms (Samavasarana). The Ezhadippattam cavern atop the hill contains 17 polished stone beds dating from the 2nd century BCE.',
     audioNarration: 'Gaze upon the ceiling of Sittanavasal cave shrine. Painted over 1,100 years ago with organic vegetable pigments, this serene fresco depicts a sacred lotus pond where elephants wade among blooming lotuses and fish dart through crystal waters.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/Pw84eyHX5Jw',
+    videoWatchUrl: 'https://www.youtube.com/watch?v=Pw84eyHX5Jw',
+    videoTitle: 'Sittanavasal: Ancient Jain Cave Art & Ezhadippattam Beds',
+    videoChannel: 'HistMind',
     historicalNamesChronology: [
       { era: 'Ancient Era', name: 'Chithan-vaasal (சித்தன்னவாசல்)', meaning: 'Abode of the Great Siddhas / Ascetics', source: 'Pudukkottai State Manual' }
     ],
@@ -607,13 +772,28 @@ export const PLACES = [
     zoomTier: 'regional', // Section 26: Regional view
     periods: ['pre_sangam'],
     categories: ['archaeology', 'heritage', 'inscriptions'],
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
-    imageAttribution: 'Adichanallur Burial Urns Excavation (ASI)',
+    image: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1200&q=80',
+    imageAttribution: 'Adichanallur Megalithic Urn Burial Excavations, Tamirabarani',
+    gallery: [
+      {
+            url: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1200&q=80',
+            title: 'Megalithic Urn Burials',
+            caption: 'Excavated burial urns along the Tamirabarani river basin dating back over 3,000 years'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80',
+            title: 'Bronze & Iron Artifacts',
+            caption: 'Intricately forged bronze animal figurines, iron swords, and gold diadems'
+      }
+],
     shortDescription: 'One of the largest prehistoric burial urn sites in India, carbon-dated between 905 BCE and 696 BCE, yielding gold diadems, bronze roosters, and iron weapons.',
     whyItMatters: 'Demonstrates over 3,000 years of continuous cultural and metallurgical mastery along the Tamirabarani river basin, mentioned in classical Sangam texts.',
     fullStory: 'Excavated originally in 1876 by Dr. Jagor and later by Alexander Rea in 1904, Adichanallur contains thousands of massive terracotta burial urns (mudhumakkal thazhi). Recent carbon dating confirmed that ancient inhabitants practiced iron smelting, bronze craftsmanship, and agriculture before 900 BCE.',
     audioNarration: 'You are standing upon the red gravel ridges of Adichanallur along the Tamirabarani river. Nearly 3,000 years ago, ancient Tamils buried their ancestors in monumental clay urns with bronze filigree roosters, gold diadems, and iron swords.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/bg3gVrAg80U',
+    videoWatchUrl: 'https://www.youtube.com/watch?v=bg3gVrAg80U',
+    videoTitle: '178 புதைகுழிகள்! ஆதிச்சநல்லூர் மண்ணுக்குள் என்ன இருந்தது? (Adichanallur Excavations)',
+    videoChannel: 'THEDAL VERSE',
     historicalNamesChronology: [
       { era: 'Early Iron Age (c. 900 BCE)', name: 'Tamirabarani Megalithic Center', meaning: 'Sacred Urn Burial Ground', source: 'ASI Radiocarbon Reports' }
     ],
@@ -663,13 +843,28 @@ export const PLACES = [
     zoomTier: 'regional', // Section 26: Regional view
     periods: ['pre_sangam', 'sangam'],
     categories: ['archaeology', 'ancient_cities', 'crafts', 'inscriptions'],
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
-    imageAttribution: 'Kodumanal Excavation & Semi-precious Beads (Tamil University)',
+    image: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1200&q=80',
+    imageAttribution: 'Kodumanal Ancient Gem-Cutting & Wootz Steel Site, Noyyal Valley',
+    gallery: [
+      {
+            url: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1200&q=80',
+            title: 'Ancient Steel & Bead Furnaces',
+            caption: 'High-carbon wootz steel manufacturing center documented in the Sangam work Padirruppattu'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=80',
+            title: 'Etched Carnelian Gemstones',
+            caption: 'Semi-precious stone bead industry exported across the Roman Empire'
+      }
+],
     shortDescription: 'The greatest ancient industrial workshop of South India mentioned in Pathitruppathu, celebrated for high-grade crucible Wootz steel and beryl/carnelian gems exported to Rome.',
     whyItMatters: 'Direct confirmation of Sangam literature descriptions of "Kodumanam where jewel craftsmen pierce fine gems" (கொடுமணம் பட்ட வினைமாண் அருங்கலம்), yielding Roman coin hoards and inscribed potsherds.',
     fullStory: 'Located on the banks of the Noyyal river, Kodumanal was a major manufacturing node along the trans-peninsular trade route through the Palakkad Gap connecting the Arabian Sea to the Bay of Bengal.',
     audioNarration: 'You are at Kodumanal on the Noyyal river. In the Sangam era, the furnaces here roared night and day, smelting ultra-high-carbon crucible steel that Roman emperors bought for their swords, while gemcutters drilled fine beryl beads praised in the anthology Pathitruppathu.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/yg4KLpDFkdQ',
+    videoWatchUrl: 'https://www.youtube.com/watch?v=yg4KLpDFkdQ',
+    videoTitle: 'Unearth hidden treasures of Tamil Nadu: Archaeological Site Kodumanal',
+    videoChannel: 'Let\'s explore facts',
     historicalNamesChronology: [
       { era: 'Sangam Era', name: 'Kodumanam (கொடுமணம்)', meaning: 'Place of Gifted Gems', source: 'Pathitruppathu' }
     ],
@@ -719,13 +914,28 @@ export const PLACES = [
     zoomTier: 'macro', // Section 26: Macro view (Imperial Capital)
     periods: ['medieval'],
     categories: ['heritage', 'temples', 'ancient_cities', 'monuments'],
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
-    imageAttribution: 'Gangaikonda Cholapuram Temple Vimana (UNESCO World Heritage Site)',
+    image: 'https://images.unsplash.com/photo-1609766857041-ed402ea8069a?auto=format&fit=crop&w=1200&q=80',
+    imageAttribution: 'Brihadisvara Temple, Gangaikonda Cholapuram',
+    gallery: [
+      {
+            url: 'https://images.unsplash.com/photo-1609766857041-ed402ea8069a?auto=format&fit=crop&w=1200&q=80',
+            title: 'Curving Chola Vimana',
+            caption: 'Constructed by Rajendra Chola I after victorious military campaigns reaching the river Ganges'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
+            title: 'Chandesa Anugraha Murti',
+            caption: 'Celebrated high-relief sculpture depicting Shiva crowning devotee Chandesa'
+      }
+],
     shortDescription: 'Imperial capital built by Rajendra Chola I to commemorate his triumphant northern expedition to the river Ganges, serving as Chola capital for 250 years.',
     whyItMatters: 'A UNESCO World Heritage Great Living Chola Temple featuring graceful curved vimana architecture and the colossal excavated reservoir Cholagangam (Ponneri).',
     fullStory: 'After marching victoriously to the Ganges and launching overseas naval campaigns to Southeast Asia, Rajendra Chola I founded this city in 1025 CE. He constructed a massive 160-foot granite vimana with softer, more feminine contours than Thanjavur, and dug the 16-mile-long artificial lake Cholagangam, calling it the "liquid pillar of victory".',
     audioNarration: 'Welcome to Gangaikonda Cholapuram. In 1025 CE, Emperor Rajendra Chola I returned from his victorious march to the river Ganges and founded this grand capital. Notice the graceful curved silhouette of the 160-foot vimana, reflecting the pinnacle of Chola imperial grandeur.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/bKHvntzCd4o',
+    videoWatchUrl: 'https://www.youtube.com/watch?v=bKHvntzCd4o',
+    videoTitle: 'Brihadisvara Temple of Gangaikonda Cholapuram Architecture & Rajendra Chola',
+    videoChannel: 'Cosmic Maps',
     historicalNamesChronology: [
       { era: 'Chola Imperial Era (1025 CE)', name: 'Gangaikonda Cholapuram', meaning: 'The City of the Chola who brought the Ganges', source: 'Tiruvalangadu Plates' }
     ],
@@ -775,13 +985,28 @@ export const PLACES = [
     zoomTier: 'macro', // Section 26: Macro view (Ancient Capital)
     periods: ['pre_sangam', 'sangam', 'medieval'],
     categories: ['ancient_cities', 'heritage', 'temples', 'crafts', 'literature'],
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
-    imageAttribution: 'Uraiyur Ancient Capital & Nachiyar Koil (Wikimedia Commons)',
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
+    imageAttribution: 'Ancient Sangam Chola Royal Capital, Uraiyur, Tiruchirappalli',
+    gallery: [
+      {
+            url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
+            title: 'Panchavarnaswamy Temple',
+            caption: 'Ancient royal capital of Early Chola monarchs celebrated for world-famous fine muslins'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1200&q=80',
+            title: 'Kallanai Grand Anicut nearby',
+            caption: 'Karikala Chola’s masterwork regulating the Kaveri waters since 2nd Century CE'
+      }
+],
     shortDescription: 'The celebrated ancient inland royal capital of the Early Sangam Cholas, praised by Roman geographers for exporting gossamer-thin fine muslin textiles.',
     whyItMatters: 'Mentioned by Ptolemy as Orthoura and in the Periplus as the origin of all fine cotton cloths called Argaritic muslins, praised in Sangam poems as woven like smoke.',
     fullStory: 'Birthplace of Saint Pugazh Chola and poet-king Karikala Chola, Uraiyur was the heart of the early Chola kingdom before the seat moved to Thanjavur. Excavations have revealed dyed potsherds, terracotta figurines, and weaving infrastructure.',
     audioNarration: 'Welcome to Uraiyur, ancient inland capital of the Sangam Cholas. Roman travelers marvelled at the cotton woven here, writing that it was so fine and transparent it looked like vapor or morning mist.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/2IgvO-F_LbA',
+    videoWatchUrl: 'https://www.youtube.com/watch?v=2IgvO-F_LbA',
+    videoTitle: 'URAIYUR — BEFORE THANJAVUR | The Forgotten First Capital of the Cholas!',
+    videoChannel: 'Tamil History',
     historicalNamesChronology: [
       { era: 'Sangam Era', name: 'Uraiyur (உறையூர்)', meaning: 'City of Habitation / Royal Residence', source: 'Purananuru, Akananooru' },
       { era: 'Greco-Roman (1st c. CE)', name: 'Orthoura Regia / Argaru', meaning: 'Royal Capital of Cotton Muslins', source: 'Ptolemy, Periplus' }
@@ -832,13 +1057,28 @@ export const PLACES = [
     zoomTier: 'regional', // Section 26: Regional view
     periods: ['sangam'],
     categories: ['ancient_cities', 'archaeology', 'heritage', 'inscriptions'],
-    image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80',
-    imageAttribution: 'Arikamedu Ruined Brick Warehouses on Ariyankuppam River (ASI)',
+    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+    imageAttribution: 'Arikamedu Indo-Roman Seaport & Bead Warehouse Ruins',
+    gallery: [
+      {
+            url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+            title: 'Port Warehouse Ruins',
+            caption: 'Brick maritime warehouses where Mediterranean ships docked 2,000 years ago'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80',
+            title: 'Roman Amphorae Jars',
+            caption: 'Vessels that carried Italian wine, olive oil, and garum to Tamilakam'
+      }
+],
     shortDescription: 'The foremost excavated Indo-Roman trading port on the Coromandel coast, identified with Poduke in the Periplus, yielding Roman amphorae and Arretine ware.',
     whyItMatters: 'Excavated by Sir Mortimer Wheeler in 1945, Arikamedu provided definitive archaeological proof of extensive direct maritime trade between the Roman Empire and Tamilakam.',
     fullStory: 'Located along the Ariyankuppam river lagoon, Arikamedu possessed brick warehouses, dye vats for textiles, and bead-manufacturing workshops that produced millions of tiny glass seed beads exported across the Indian Ocean.',
     audioNarration: 'You are on the quiet riverbanks of Arikamedu. Two thousand years ago, Roman merchant galleys sailed up this river, unloading jars of Mediterranean wine, olive oil, and gold coins in exchange for Indian pepper, silks, and gemstones.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/YZnlqBDioac',
+    videoWatchUrl: 'https://www.youtube.com/watch?v=YZnlqBDioac',
+    videoTitle: 'Keeladi’s Port City | Arikamedu Indo-Roman Trade Center | Tamil Nadu’s Hidden History',
+    videoChannel: 'Unacademy IAS: English',
     historicalNamesChronology: [
       { era: 'Greco-Roman (1st c. CE)', name: 'Poduke Emporion (Ποδούκη)', meaning: 'Coastal Seaport of the Coromandel', source: 'Periplus, Ptolemy' },
       { era: 'Local Name', name: 'Arikamedu (அரிக்கமேடு)', meaning: 'Mound of Arugan (Jain / Buddha / Coastal mound)', source: 'Archaeological Survey' }
@@ -890,13 +1130,28 @@ export const PLACES = [
     zoomTier: 'regional', // Section 26: Regional view
     periods: ['medieval'],
     categories: ['inscriptions', 'heritage', 'temples'],
-    image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=80',
-    imageAttribution: 'Vaikunta Perumal Temple Inscription Wall (ASI / Wikimedia Commons)',
+    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
+    imageAttribution: 'Sundara Varada Perumal Temple & Kudavolai Democracy Wall, Uttiramerur',
+    gallery: [
+      {
+            url: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
+            title: 'Sundara Varada Perumal Sanctum',
+            caption: 'Chola architectural jewel built in three vertical sanctum tiers'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=1200&q=80',
+            title: 'Kudavolai Inscription Wall',
+            caption: 'Parantaka Chola I (920 CE) epigraph laying down qualifications, disqualifications, and ballot election laws'
+      }
+],
     shortDescription: 'Historical village renowned for its 10th-century stone inscriptions detailing the Kudavolai secret-ballot democratic election system under Parantaka Chola I.',
     whyItMatters: 'Hailed as one of the world\'s most detailed constitutional documents on local self-governance, candidate eligibility, moral qualifications, disqualification, and recall elections.',
     fullStory: 'Engraved on the granite walls of the Vaikunta Perumal Temple in 920 CE, the inscription outlines the functioning of 30 village wards, committee systems (Annual, Garden, Tank, Gold, and Assessment Committees), and the drawing of palm-leaf ballots by an innocent child.',
     audioNarration: 'Stand before the stone plinth of Uttiramerur. In 920 CE, over 1,100 years ago, villagers gathered here to elect their leaders through a secret pot-ticket ballot called Kudavolai. The inscription sets out strict rules: candidates had to be honest, educated, and free of corruption.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/ne7s8wjZOjU',
+    videoWatchUrl: 'https://www.youtube.com/watch?v=ne7s8wjZOjU',
+    videoTitle: 'The Indian Village That Had a Democratic Election System 1,100 Years Ago! (Uttiramerur Kudavolai)',
+    videoChannel: 'The Alkama',
     historicalNamesChronology: [
       { era: 'Pallava & Chola (8th–10th c. CE)', name: 'Uttiramerur Chaturvedimangalam', meaning: 'Noble Assembly Village', source: 'Chola Inscriptions' }
     ],
@@ -946,13 +1201,28 @@ export const PLACES = [
     zoomTier: 'macro', // Section 26: Macro view (Major temple & coronation seat)
     periods: ['sangam', 'post_sangam', 'medieval', 'later'],
     categories: ['heritage', 'temples', 'ancient_cities', 'crafts'],
-    image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=80',
-    imageAttribution: 'Chidambaram Nataraja Temple Golden Roof (Wikimedia Commons)',
+    image: 'https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=1200&q=80',
+    imageAttribution: 'Thillai Nataraja Temple Eastern Gopuram & Golden Roof, Chidambaram',
+    gallery: [
+      {
+            url: 'https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=1200&q=80',
+            title: 'Nataraja Eastern Gopuram',
+            caption: 'Adorned with all 108 Bharatanatyam classical dance poses (Karanas) chiseled in granite'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=80',
+            title: 'Chit Sabha Golden Roof',
+            caption: 'Consecrated with 21,600 gold tiles representing the daily human breaths'
+      }
+],
     shortDescription: 'The sacred heart of Saivism, home to the golden-roofed Kanaka Sabha where Shiva performs the Ananda Tandava (Cosmic Dance) and the sacred Chidambara Rahasyam.',
     whyItMatters: 'Chola emperors celebrated their formal coronations at the Thillai temple, gilding the roof with gold and commemorating the 108 Karanas of Bharatanatyam classical dance on its gopurams.',
     fullStory: 'Surrounded by ancient mangrove forests (Thillai), the temple symbolizes the Akasha (space/ether) element of the Pancha Bhoota shrines. The eastern gopuram preserves South Asia’s most complete sculptural catalogue of all 108 Bharatanatyam dance postures.',
     audioNarration: 'Look up at the glittering golden roof of Chidambaram. Here, Chola emperors bowed in reverence before Lord Nataraja, the cosmic dancer whose rhythm sustains the universe. Notice the gopuram carvings depicting all 108 sacred postures of classical Bharatanatyam dance.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/Rg9sV8mvzDA',
+    videoWatchUrl: 'https://www.youtube.com/watch?v=Rg9sV8mvzDA',
+    videoTitle: 'Visit Chidambaram Thillai Nataraja | Cosmic Dance Architecture & History',
+    videoChannel: 'Prāna Stories',
     historicalNamesChronology: [
       { era: 'Ancient Era', name: 'Thillai (தில்லை)', meaning: 'Mangrove Forest Shrine', source: 'Sangam Anthologies, Thevaram' },
       { era: 'Chola Era', name: 'Koil (கோயில்)', meaning: 'The Supreme Temple', source: 'Saiva Agamas' }
@@ -1003,13 +1273,28 @@ export const PLACES = [
     zoomTier: 'regional', // Section 26: Regional view
     periods: ['sangam', 'post_sangam', 'medieval', 'later'],
     categories: ['heritage', 'temples', 'monuments'],
-    image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=80',
-    imageAttribution: 'Tiruvannamalai Annamalaiyar Temple Gopuram (Wikimedia Commons)',
+    image: 'https://images.unsplash.com/photo-1621847468516-1ed5d0df56fe?auto=format&fit=crop&w=1200&q=80',
+    imageAttribution: 'Arunachaleswarar Temple & Sacred Annamalai Peak, Tiruvannamalai',
+    gallery: [
+      {
+            url: 'https://images.unsplash.com/photo-1621847468516-1ed5d0df56fe?auto=format&fit=crop&w=1200&q=80',
+            title: 'Annamalaiyar Rajagopuram',
+            caption: 'One of the tallest gopurams in India (217 feet), built by Krishnadevaraya'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80',
+            title: 'Agni Sacred Mountain',
+            caption: 'Manifestation of the elemental Lingam of Fire celebrated during Karthigai Deepam'
+      }
+],
     shortDescription: 'One of the Pancha Bhoota Sthalams representing the Fire element (Agni), situated at the foot of the sacred Arunachala hill, famed for the massive Karthigai Deepam flame.',
     whyItMatters: 'A 25-acre temple sanctuary with a 217-foot Rajagopuram, praised in Sangam verses and home to saints like Ramana Maharshi, Arunagirinathar, and Seshadri Swamigal.',
     fullStory: 'The sacred hill of Arunachala is considered by geologists to be older than the Himalayas. Krishnadevaraya of the Vijayanagara Empire constructed the towering 217-foot Eastern Rajagopuram.',
     audioNarration: 'Stand at the foot of Arunachala, the ancient red mountain of fire. Every year on Karthigai Deepam, a colossal flame is lit atop this peak, visible for miles across the plains as it has been for thousands of years.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/mtIoBnI8Vgk',
+    videoWatchUrl: 'https://www.youtube.com/watch?v=mtIoBnI8Vgk',
+    videoTitle: 'History Of Tiruvannamalai Mountain & Annamalaiyar Temple',
+    videoChannel: 'Info Tiruvannamalai',
     historicalNamesChronology: [
       { era: 'Sangam Era', name: 'Arunagiri / Annamalai', meaning: 'Inaccessible Holy Mountain', source: 'Sangam Literature' }
     ],
@@ -1061,12 +1346,27 @@ export const PLACES = [
     periods: ['medieval', 'later'],
     categories: ['heritage', 'temples', 'ancient_cities', 'crafts', 'food_culture'],
     image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
-    imageAttribution: 'Mahamaham Tank Kumbakonam (Wikimedia Commons)',
+    imageAttribution: 'Sarangapani Temple Stone Chariot Sanctum, Kumbakonam',
+    gallery: [
+      {
+            url: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
+            title: 'Sarangapani Chariot Sanctum',
+            caption: 'Magnificent sanctum carved as a horse-drawn stone chariot with stone wheels'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=80',
+            title: 'Mahamaham Sacred Step Tank',
+            caption: 'Expansive holy reservoir surrounded by 16 ornate pillared shrines'
+      }
+],
     shortDescription: 'The ancient temple capital of the Kaveri delta, famous for the Mahamaham festival celebrated once every 12 years, Sarangapani temple, and exquisite brass metalcraft.',
     whyItMatters: 'Known in medieval Chola records as Kudamukku, it was the commercial and academic sister city to Thanjavur, famous for degree coffee and bronze lost-wax casting.',
     fullStory: 'Nestled between the Kaveri and Arasalar rivers, Kumbakonam is home to the 12-yearly Mahamaham festival where millions gather to bathe in the sacred tank.',
     audioNarration: 'Welcome to Kumbakonam, ancient Kudamukku. Located at the fertile fork of the Kaveri, this city has been a center of learning, bronze casting, and temple festivals for over a millennium.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/b7wDUi78HaQ',
+    videoWatchUrl: 'https://www.youtube.com/watch?v=b7wDUi78HaQ',
+    videoTitle: 'Story of Mahamaham tank, Kumbakonam & City of Temples',
+    videoChannel: 'Ganesh Raghav',
     historicalNamesChronology: [
       { era: 'Medieval Era', name: 'Kudamukku (குடமூக்கு)', meaning: 'Pot-shaped confluence of Kaveri', source: 'Thevaram, Chola Inscriptions' }
     ],
@@ -1116,13 +1416,28 @@ export const PLACES = [
     zoomTier: 'macro', // Section 26: Macro view (Chola Naval Base)
     periods: ['sangam', 'medieval'],
     categories: ['ancient_cities', 'heritage', 'archaeology'],
-    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
-    imageAttribution: 'Nagapattinam Coastline (Wikimedia Commons)',
+    image: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1200&q=80',
+    imageAttribution: 'Chola Maritime Haven & Chudamani Vihara Coast, Nagapattinam',
+    gallery: [
+      {
+            url: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1200&q=80',
+            title: 'Chudamani Vihara Artifacts',
+            caption: 'Endowed by King Sri Mara Vijayottungavarman of Srivijaya and confirmed by Rajaraja I in the Leiden plates'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+            title: 'Historic Chola Seaport Haven',
+            caption: 'Naval embarkation port for expeditions across Southeast Asia and the Bay of Bengal'
+      }
+],
     shortDescription: 'The primary naval base of the Imperial Cholas, from where Rajendra I launched his naval expeditions to Southeast Asia, and site of the Chudamani Buddhist Vihara.',
     whyItMatters: 'Demonstrates cosmopolitan religious tolerance: Rajaraja Chola I granted an entire village (Anaimangalam) to support the Buddhist monastery built by the Srivijayan King of Sumatra.',
     fullStory: 'Ptolemy recorded it as Nikama. During the 11th century, Nagapattinam served as the launchpad for Chola fleets crossing the Bay of Bengal to Kadaram (Kedah, Malaysia) and Srivijaya (Indonesia). Over 350 exquisite Mahayana and Theravada bronzes have been recovered from here.',
     audioNarration: 'You are at Nagapattinam, the great naval port of the Cholas. From these shores, thousands of warships under Emperor Rajendra Chola I set sail across the ocean to Southeast Asia, while Buddhist monks from Sumatra prayed at the Chudamani Vihara.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/k5ratbvyaRg',
+    videoWatchUrl: 'https://www.youtube.com/watch?v=k5ratbvyaRg',
+    videoTitle: 'நாகப்பட்டினம் துறைமுகத்தில் சீனக் கோபுரமா?! 2000 வருட சோழர் வரலாறு (Nagapattinam Port History)',
+    videoChannel: 'வானை வாரியர்ஸ் (Vanai Warriors)',
     historicalNamesChronology: [
       { era: 'Greco-Roman (140 CE)', name: 'Nikama (Νίκαμα)', meaning: 'Coromandel Coastal Emporium', source: 'Ptolemy' },
       { era: 'Chola Era', name: 'Nagapattinam / Cholakula-Sundari-Pattinam', meaning: 'City of the Serpentine Mariners', source: 'Leiden Plates' }
@@ -1173,13 +1488,28 @@ export const PLACES = [
     zoomTier: 'detailed', // Section 26: Detailed view (Rock Fort / Cave)
     periods: ['medieval', 'later'],
     categories: ['heritage', 'temples', 'monuments', 'inscriptions'],
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
-    imageAttribution: 'Thirumayam Hill Fort & Cannons (ASI / Wikimedia Commons)',
+    image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80',
+    imageAttribution: 'Thirumayam Hilltop Bastion & Rock-Cut Cave Temple',
+    gallery: [
+      {
+            url: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80',
+            title: 'Hilltop Bastion & Cannon',
+            caption: '17th-century polygar fortress built by Sethupathi king of Ramnad'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
+            title: 'Satyagiriswara Cave Temple',
+            caption: 'Pandyan rock-cut shrine with monumental bas-relief of Seshasayi Vishnu'
+      }
+],
     shortDescription: 'Monolithic granite hill crowned by a 17th-century fortress, containing 8th-century rock-cut cave temples dedicated to Vishnu (Sathyamurthi) and Shiva.',
     whyItMatters: 'Preserves the largest rock-cut Anantasayana Vishnu relief in Tamil Nadu, ancient musical inscriptions, and cannon bastions built by the Sethupathis of Ramnad.',
     fullStory: 'Built in 1687 by Vijaya Raghunatha Sethupathi of Ramnad, the fort sits atop a steep granite outcrop. At its base, the rock-cut cave temples preserve masterworks of early medieval sculpture and epigraphical treatises.',
     audioNarration: 'Ascend the granite battlements of Thirumayam fort. Look across the plains of Pudukkottai from the watchtower cannon bastion, then enter the cool stone cave at the base to behold the monumental rock-carved reclining Vishnu.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/uTb1-x_k_hA',
+    videoWatchUrl: 'https://www.youtube.com/watch?v=uTb1-x_k_hA',
+    videoTitle: 'Thirumayam Rock-Cut Sathyamurthi Perumal & Historic Rock Fort',
+    videoChannel: 'Spiritual Path Tamil',
     historicalNamesChronology: [
       { era: 'Early Medieval', name: 'Thirumeyyam (திருமெய்யம்)', meaning: 'Abode of Ultimate Truth', source: 'Divya Prabandham' }
     ],
@@ -1230,13 +1560,28 @@ export const PLACES = [
     zoomTier: 'regional', // Section 26: Regional view
     periods: ['pre_sangam', 'sangam'],
     categories: ['ancient_cities', 'archaeology', 'heritage', 'inscriptions'],
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
-    imageAttribution: 'Alagankulam Coast and Excavation Potsherds (TN State Archaeology)',
+    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+    imageAttribution: 'Alagankulam Ancient Seaport near Vaigai Confluence',
+    gallery: [
+      {
+            url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+            title: 'Vaigai River Mouth Haven',
+            caption: 'Active maritime port from 4th BCE connecting Pandyan trade directly to Rome and Alexandria'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80',
+            title: 'Roman Coin Hoards & Rouletted Ware',
+            caption: 'Excavated Roman coins of Arcadius and Valentinian II with Mediterranean rouletted pottery'
+      }
+],
     shortDescription: 'Major Sangam seaport on the Palk Strait near the mouth of the Vaigai, famous for yielding hundreds of Roman imperial coins, Mediterranean amphorae, and inscribed pottery.',
     whyItMatters: 'Demonstrates the river-to-sea connectivity of the Vaigai Civilization: goods produced at Madurai and Keeladi moved down the river to Alagankulam for oceanic export to Rome and Southeast Asia.',
     fullStory: 'Excavations by the Tamil Nadu State Department of Archaeology unearthed over 13,000 antiquities including Roman coins minted by Emperor Valentinian II, Arcadius, and Honorius, alongside Rouletted ware, semi-precious beads, and stamped pottery with ship graffiti.',
     audioNarration: 'You are at Alagankulam where the ancient Vaigai enters the Palk Strait. Here, Roman merchant ships anchored alongside Pandyan catamarans, exchanging gold coins bearing portraits of Roman emperors for Tamil black pepper and pearls.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/hti6r99pchQ',
+    videoWatchUrl: 'https://www.youtube.com/watch?v=hti6r99pchQ',
+    videoTitle: 'வைகை ஆற்றின் கழிமுகம் | Alagankulam Ancient Pandyan Seaport & Estuary Excavations',
+    videoChannel: 'Ellame Everything',
     historicalNamesChronology: [
       { era: 'Sangam Era', name: 'Alagankulam Vaigai Estuary Port', meaning: 'City at the Mouth of the Sacred Vaigai', source: 'Archaeological Excavation Reports' }
     ],
@@ -1286,13 +1631,28 @@ export const PLACES = [
     zoomTier: 'detailed', // Section 26: Detailed view (Craft center)
     periods: ['medieval', 'later'],
     categories: ['crafts', 'heritage', 'temples'],
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
-    imageAttribution: 'Swamimalai Bronze Casting Atelier (Wikimedia Commons)',
+    image: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=80',
+    imageAttribution: 'Swamimalai Hereditary Lost-Wax Bronze Metalcraft Center',
+    gallery: [
+      {
+            url: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=80',
+            title: 'Lost-Wax Bronze Casting',
+            caption: 'Millennium-old continuous hereditary bronze craft holding prestigious GI tag status'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
+            title: 'Swaminathaswamy Temple',
+            caption: 'Sacred hillock temple honoring Lord Muruga teaching the Pranava Mantra to Shiva'
+      }
+],
     shortDescription: 'World-renowned center of hereditary master sthapatis continuing the 1,000-year-old Chola lost-wax technique (cire perdue) of casting panchaloha bronze statues.',
     whyItMatters: 'Certified with a Geographical Indication (GI) tag, Swamimalai artisans trace their lineage directly to the master sculptors commissioned by Rajaraja Chola for Brihadisvara Temple.',
     fullStory: 'Using bees-wax models packed in clay extracted from the alluvial silt of the Kaveri river, sculptors pour molten panchaloha alloy (copper, zinc, lead, gold, silver) according to the precise proportions laid down in the ancient Shilpa Shastras.',
     audioNarration: 'Listen to the gentle rhythmic tapping of chisels in the ateliers of Swamimalai. For over thirty generations, these sculptors have preserved the sacred art of Chola bronze casting, transforming molten metal into icons of Nataraja and Parvati admired across global museums.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/CRfymA6HN5Y',
+    videoWatchUrl: 'https://www.youtube.com/watch?v=CRfymA6HN5Y',
+    videoTitle: 'How was it made? Lost-wax bronze casting | Chola Metallurgy Mastercraft',
+    videoChannel: 'Victoria and Albert Museum',
     historicalNamesChronology: [
       { era: 'Sangam Era', name: 'Thiruveragam (திருவேரகம்)', meaning: 'Sacred Hill Shrine of Murugan', source: 'Thirumurugarruppadai' }
     ],
@@ -1342,13 +1702,28 @@ export const PLACES = [
     zoomTier: 'regional', // Section 26: Regional view
     periods: ['later'],
     categories: ['heritage', 'food_culture', 'crafts', 'monuments'],
-    image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=80',
-    imageAttribution: 'Chettinad Heritage Mansion Courtyard (Wikimedia Commons)',
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
+    imageAttribution: 'Kanadukathan Heritage Palace & Athangudi Courtyard, Chettinad',
+    gallery: [
+      {
+            url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
+            title: 'Kanadukathan Palace',
+            caption: 'Vast palatial mansion featuring Burmese teak pillars, Belgian crystal mirrors, and Italian marble'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=80',
+            title: 'Athangudi Patterned Courtyard',
+            caption: 'Sunlit courtyards paving intricate handmade floral tiles'
+      }
+],
     shortDescription: 'A historic cluster of 73 heritage villages renowned for opulent 19th-century merchant mansions featuring Burmese teak, Italian marble, handmade Athangudi tiles, and world-famous cuisine.',
     whyItMatters: 'Built by the maritime mercantile Nattukottai Chettiars who financed commerce across Burma, Ceylon, Vietnam, and Malaya, creating an architectural fusion of Dravidian and European styles.',
     fullStory: 'Each mansion covers thousands of square feet, incorporating vast open central courtyards for cooling, intricate Belgian mirrors, cast-iron pillars from England, and handmade floral cement tiles from Athangudi.',
     audioNarration: 'Step into the cool pillared courtyards of Chettinad. These palatial mansions were built with teakwood from Burma, crystal chandeliers from Europe, and vibrant handmade tiles from nearby Athangudi by seafaring merchants who financed trade across Southeast Asia.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/p_9a_pFIU2I',
+    videoWatchUrl: 'https://www.youtube.com/watch?v=p_9a_pFIU2I',
+    videoTitle: 'Chettinad Heritage Mansion Architecture & Courtyards',
+    videoChannel: 'DakshinaChitra Museum',
     historicalNamesChronology: [
       { era: 'Later Era', name: 'Chettinad (செட்டிநாடு)', meaning: 'Land of the Merchant Guilds', source: 'Historical Records' }
     ],
@@ -1399,12 +1774,27 @@ export const PLACES = [
     periods: ['sangam', 'post_sangam', 'medieval', 'later'],
     categories: ['heritage', 'temples', 'ancient_cities', 'crafts', 'food_culture'],
     image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=80',
-    imageAttribution: 'Nellaiappar Temple Musical Pillars (Wikimedia Commons)',
+    imageAttribution: 'Swami Nellaiappar Temple & Acoustic Musical Pillars, Tirunelveli',
+    gallery: [
+      {
+            url: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=80',
+            title: 'Nellaiappar Rajagopuram',
+            caption: 'Magnificent 14-acre temple complex dating to Early Pandyan kings and sung in Tevaram'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
+            title: 'Acoustic Musical Stone Pillars',
+            caption: 'Pillars carved from single granite blocks producing classical musical swaras when gently struck'
+      }
+],
     shortDescription: 'Ancient city on the perennial Tamirabarani river, home to the Nellaiappar-Kanthimathi temple renowned for miraculous acoustic musical pillars carved from monolithic granite.',
     whyItMatters: 'Features South Asia\'s most acoustically sophisticated musical stone pillars: tapping a single central pillar produces bell-like resonance across the Seven Musical Notes (Sapta Swaras).',
     fullStory: 'Praised by Saivite saint Sambandar in the 7th century, the city gets its name from "Thiru-Nel-Veli" (Sacred Paddy Hedge), commemorating the miracle where rain spared sacred paddy stored for the temple.',
     audioNarration: 'Welcome to Tirunelveli on the banks of the emerald Tamirabarani. Inside the Nellaiappar temple, strike the slender granite pillars gently with your fingers—each pillar is tuned to resonate with pure musical notes of the classical Carnatic scale.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/MNDlBxhkCdo',
+    videoWatchUrl: 'https://www.youtube.com/watch?v=MNDlBxhkCdo',
+    videoTitle: 'Nellaiappar Temple Tirunelveli Architecture & Musical Stone Pillars',
+    videoChannel: 'Vdo Road',
     historicalNamesChronology: [
       { era: 'Ancient Era', name: 'Venuvanam (வேணுவனம்)', meaning: 'Bamboo Forest Sanctuary', source: 'Sthala Purana' },
       { era: 'Medieval Era', name: 'Tirunelveli (திருநெல்வேலி)', meaning: 'Town Protected by a Hedge of Sacred Paddy', source: 'Thevaram, Pandyan Inscriptions' }
@@ -1455,13 +1845,28 @@ export const PLACES = [
     zoomTier: 'macro', // Section 26: Macro view (Southern tip of India)
     periods: ['pre_sangam', 'sangam', 'post_sangam', 'medieval', 'later'],
     categories: ['heritage', 'monuments', 'temples'],
-    image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80',
-    imageAttribution: '133-ft Thiruvalluvar Statue & Vivekananda Rock Memorial (Wikimedia Commons)',
+    image: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=80',
+    imageAttribution: '133-ft Thiruvalluvar Statue & Ocean Confluence, Kanyakumari',
+    gallery: [
+      {
+            url: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=80',
+            title: '133-ft Thiruvalluvar Monolith',
+            caption: 'Sculpted by Dr. V. Ganapati Sthapati with 133 granite blocks symbolizing the 133 chapters of Tirukkural'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+            title: 'Vivekananda Rock Memorial',
+            caption: 'Sacred island rock at the tri-sea meeting point of the Indian Ocean, Bay of Bengal, and Arabian Sea'
+      }
+],
     shortDescription: 'The sacred southernmost tip of the Indian subcontinent where the Arabian Sea, Bay of Bengal, and Indian Ocean merge, crowned by the monumental 133-foot stone statue of saint Thiruvalluvar.',
     whyItMatters: 'Documented in the Periplus of the Erythraean Sea as Komaria, it marks the traditional southern boundary of ancient Tamilakam sung in the Tolkappiyam preface: "Vada Venkadam Then Kumari" (from northern Tirupati to southern Kumari).',
     fullStory: 'Standing on a twin rocky island off the mainland, the 133-foot granite statue of Thiruvalluvar sculpted by Dr. V. Ganapati Sthapati symbolizes the 133 chapters of the Tirukkural. Nearby stands the Vivekananda Rock Memorial.',
     audioNarration: 'You stand at Cape Comorin, the very tip of India where three oceans collide. Gazing out over the crashing waves stands the monumental 133-foot stone statue of Thiruvalluvar, representing the 133 chapters of ethical wisdom that guide human life.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/tIpjnbxfPO0',
+    videoWatchUrl: 'https://www.youtube.com/watch?v=tIpjnbxfPO0',
+    videoTitle: 'Documentary on Swami Vivekananda Rock Memorial & Three Oceans Confluence',
+    videoChannel: 'DD Tamil',
     historicalNamesChronology: [
       { era: 'Ancient Pre-Sangam', name: 'Then Kumari (தென்குமரி)', meaning: 'Southern Maiden Estuary', source: 'Tolkappiyam Panbarai' },
       { era: 'Greco-Roman (1st c. CE)', name: 'Komaria Akron (Κομαρία ἄκρον)', meaning: 'Cape of the Virgin Goddess', source: 'Periplus of the Erythraean Sea, Ptolemy' }
@@ -1513,12 +1918,27 @@ export const PLACES = [
     periods: ['pre_sangam', 'sangam', 'medieval'],
     categories: ['ancient_cities', 'archaeology', 'heritage', 'inscriptions'],
     image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
-    imageAttribution: 'Amaravathi Riverbed Excavation Finds (TN State Archaeology)',
+    imageAttribution: 'Pasupatheeswarar Temple, Karur (Ancient Chera Vanji)',
+    gallery: [
+      {
+            url: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
+            title: 'Pasupatheeswarar Temple',
+            caption: 'Ancient royal Chera capital Vanji praised in Sangam poetry and Tevaram hymns'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80',
+            title: 'Chera Coinage & Roman Pottery',
+            caption: 'Riverbed finds proving active inland mints and Mediterranean trade ties'
+      }
+],
     shortDescription: 'The ancient royal capital and mint of the Sangam Chera kings, identified with Vanji in classical literature, yielding the largest collection of Roman gold and silver coin hoards in South India.',
     whyItMatters: 'Extensive excavations in the Amaravathi riverbed yielded coins inscribed with Chera king names in Tamil-Brahmi ("Kollipporai", "Cheran"), Roman aurei, and gold finger rings.',
     fullStory: 'Located at the strategic confluence of the Amaravathi and Kaveri river valleys, Karur controlled trade traversing through the Palakkad Gap. Greek geographer Ptolemy calls it Karoura, the royal seat of the Cheras.',
     audioNarration: 'You are at Karur on the banks of the Amaravathi. In the Sangam era, Chera kings ruled from this inland fortress, striking their own coins stamped with their royal bow-and-arrow emblem while Roman merchants traded gold coins for river gems.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/8TiJURGnulU',
+    videoWatchUrl: 'https://www.youtube.com/watch?v=8TiJURGnulU',
+    videoTitle: 'Chera Kingdom\'s Ancient Capital History & Discoveries, Karur',
+    videoChannel: 'Possible Dani',
     historicalNamesChronology: [
       { era: 'Sangam Era', name: 'Vanji / Karuvur (வஞ்சி மாநகர்)', meaning: 'Royal Seat of the Chera Kings', source: 'Purananuru, Silappadikaram' },
       { era: 'Greco-Roman (140 CE)', name: 'Karoura Regia Cherobothri', meaning: 'Capital of the Chera Kings', source: 'Ptolemy Geography' }
@@ -1569,13 +1989,28 @@ export const PLACES = [
     zoomTier: 'detailed', // Section 26: Detailed view
     periods: ['pre_sangam', 'sangam'],
     categories: ['archaeology', 'heritage', 'crafts'],
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
-    imageAttribution: 'Vembakottai Excavations Terracotta Figurines (TN State Archaeology)',
+    image: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80',
+    imageAttribution: 'Vembakottai Vaippar River Archaeological Excavations',
+    gallery: [
+      {
+            url: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80',
+            title: 'Vaippar River Excavations',
+            caption: 'Deep stratified cultural trenches revealing Neolithic, Sangam, and Medieval layers'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80',
+            title: 'Gold Ornaments & Terracotta Artifacts',
+            caption: 'Pristine gold pendants, game pieces, and carnelian beads crafted by ancient artisans'
+      }
+],
     shortDescription: 'Multi-period archaeological excavation on the Vaippar river yielding microlithic stone tools, terracotta game boards, carnelian beads, gold pendants, and ivory carvings spanning thousands of years.',
     whyItMatters: 'Proves dense continuous human occupation in southern Tamil Nadu from the Mesolithic to the Sangam era, revealing high artistic craftsmanship in ivory and terracotta.',
     fullStory: 'Conducted systematically by the Tamil Nadu State Department of Archaeology, excavations at Vembakottai have uncovered thousands of artifacts demonstrating flourishing household workshops and active trade links with the Vaigai and Tamirabarani river valleys.',
     audioNarration: 'You are at Vembakottai on the banks of the Vaippar river. Deep in these excavation trenches lie layered stories of human life: from delicate microlithic stone tools used by hunter-gatherers to exquisite ivory dice and terracotta figurines made during the Sangam era.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/Y7Y_KpLw5zc',
+    videoWatchUrl: 'https://www.youtube.com/watch?v=Y7Y_KpLw5zc',
+    videoTitle: 'Vembakottai Excavations & Rare Sangam Era Artifacts',
+    videoChannel: 'Sun News',
     historicalNamesChronology: [
       { era: 'Prehistoric to Sangam', name: 'Vaippar Basin Settlement', meaning: 'Settlement on the Vaippar River', source: 'TN State Archaeology Reports' }
     ],
@@ -1625,13 +2060,28 @@ export const PLACES = [
     zoomTier: 'detailed', // Section 26: Detailed view
     periods: ['pre_sangam'],
     categories: ['archaeology', 'heritage'],
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
-    imageAttribution: 'Mayiladumparai Excavation Trench & Dolmens (TN State Archaeology)',
+    image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80',
+    imageAttribution: 'Mayiladumparai Prehistoric Iron Age Site (2172 BCE)',
+    gallery: [
+      {
+            url: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80',
+            title: 'Prehistoric Rock Shelter & Cists',
+            caption: 'Megalithic burial cists where AMS carbon dating proved iron working back to 2172 BCE'
+      },
+      {
+            url: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1200&q=80',
+            title: 'Earliest Iron Metallurgy in India',
+            caption: 'Pushing back the documented beginning of the Indian Iron Age to over 4,200 years ago'
+      }
+],
     shortDescription: 'World-changing archaeological discovery in Krishnagiri district where iron artifacts have been carbon-dated to 2172 BCE, establishing that the Iron Age in Tamil Nadu began over 4,200 years ago.',
     whyItMatters: 'Fundamentally rewrote Indian and global metallurgy: demonstrated that South Indian iron technology developed independently contemporary to the mature Indus Valley Civilization.',
     fullStory: 'Excavations in rock-shelters and megalithic burial dolmens revealed iron sickles, spearheads, and knives whose underlying strata were date-tested using Accelerator Mass Spectrometry (AMS) at labs in Florida, returning dates of 2172 BCE and 1615 BCE.',
     audioNarration: 'You are standing at Mayiladumparai in Krishnagiri. In 2022, carbon dating proved that over 4,200 years ago, ancient Tamils here were already smelting iron, pushing back the known beginnings of the Iron Age in India by more than a thousand years.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/5Va5bOozCzM',
+    videoWatchUrl: 'https://www.youtube.com/watch?v=5Va5bOozCzM',
+    videoTitle: 'Mayiladumparai Excavation Findings: 4200-Year-Old Iron Metallurgy in Tamil Nadu',
+    videoChannel: 'Across Cultures: A Valluvar Path',
     historicalNamesChronology: [
       { era: 'Early Iron Age (c. 2200 BCE)', name: 'Mayiladumparai Rock-Shelter Complex', meaning: 'Peacock Rock Smelting Sanctuary', source: 'Beta Analytic Radiocarbon Lab' }
     ],

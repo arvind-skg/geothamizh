@@ -9,6 +9,7 @@ import { HERITAGE_ITINERARIES } from '../data/itineraries';
 import { DAILY_TAMIL_HISTORY } from '../data/dailyHistory';
 import { STORIES } from '../data/stories';
 import { LIVING_CULTURE } from '../data/livingCulture';
+import { PLACES } from '../data/places';
 
 // Haversine distance formula in kilometers
 const calculateDistance = (lat1, lon1, lat2, lon2) => {
@@ -327,12 +328,29 @@ export const HeritageChroniclesModal = ({
                   const drivingDistKm = idx > 0 ? getDrivingDistanceKm(stops[idx - 1].lat, stops[idx - 1].lng, stop.lat, stop.lng) : 0;
                   const drivingTimeStr = idx > 0 ? getDrivingTimeStr(drivingDistKm) : '';
 
+                  const matchedPlace = PLACES.find(p => p.id === stop.placeId) || 
+                                       PLACES.find(p => p.name?.toLowerCase().includes(stop.name?.toLowerCase().split('(')[0].trim()));
+                  const stopImage = stop.image || matchedPlace?.image;
+
                   return (
                     <div key={idx} className="circuit-stop-visual-card">
                       {idx > 0 && (
                         <div className="circuit-leg-indicator">
                           <Car size={11} color="#d4952b" />
                           <span>{drivingDistKm} km ({drivingTimeStr})</span>
+                        </div>
+                      )}
+
+                      {stopImage && (
+                        <div className="circuit-stop-photo-wrap">
+                          <img 
+                            src={stopImage} 
+                            alt={stop.name} 
+                            className="circuit-stop-photo" 
+                            loading="lazy" 
+                          />
+                          <div className="circuit-stop-photo-overlay" />
+                          <span className="circuit-stop-seq-badge">Stop #{idx + 1}</span>
                         </div>
                       )}
 
@@ -393,10 +411,11 @@ export const HeritageChroniclesModal = ({
                 </button>
 
                 <div className="today-date-center">
-                  <div className="today-eyebrow">EPIGRAPHICAL & LITERARY CHRONICLE</div>
+                  <div className="today-eyebrow">EPIGRAPHICAL & LITERARY CHRONICLE • 365 DAYS ARCHIVE</div>
                   <div className="today-date-display">
                     {new Date(2026, currentHistoryEntry.month - 1, currentHistoryEntry.day).toLocaleDateString('en-US', { month: 'long', day: 'numeric' })}
                     <span className="today-year-pill">{currentHistoryEntry.year}</span>
+                    <span className="today-count-pill">{historyIndex + 1} / {DAILY_TAMIL_HISTORY.length}</span>
                   </div>
                 </div>
 
@@ -408,6 +427,35 @@ export const HeritageChroniclesModal = ({
                 >
                   <ChevronRight size={16} />
                 </button>
+
+                <div className="today-date-quick-actions">
+                  <input
+                    type="date"
+                    value={`2026-${String(currentHistoryEntry.month).padStart(2, '0')}-${String(currentHistoryEntry.day).padStart(2, '0')}`}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      if (!val) return;
+                      const parts = val.split('-');
+                      const m = parseInt(parts[1], 10);
+                      const d = parseInt(parts[2], 10);
+                      const idx = DAILY_TAMIL_HISTORY.findIndex(h => h.month === m && h.day === d);
+                      if (idx >= 0) setHistoryIndex(idx);
+                    }}
+                    className="today-date-native-picker"
+                    title="Jump to any date in the 365-day calendar"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const idx = DAILY_TAMIL_HISTORY.findIndex(h => h.month === currentMonth && h.day === currentDay);
+                      setHistoryIndex(idx >= 0 ? idx : 0);
+                    }}
+                    className="today-jump-today-btn"
+                    title="Jump to Today's Date"
+                  >
+                    Today
+                  </button>
+                </div>
               </div>
 
               {/* Main History Capsule Card */}
@@ -427,26 +475,63 @@ export const HeritageChroniclesModal = ({
 
                 <div className="today-tamil-title">{currentHistoryEntry.tamilTitle}</div>
 
+                {/* Significance Highlight */}
+                {currentHistoryEntry.significance && (
+                  <div className="today-significance-box">
+                    <Sparkles size={16} className="today-significance-icon" />
+                    <div>
+                      <strong className="today-significance-label">Historical Significance: </strong>
+                      <span>{currentHistoryEntry.significance}</span>
+                    </div>
+                  </div>
+                )}
+
+                {/* Narrative Description */}
                 <div className="today-quote-box">
                   <span className="today-quote-mark">“</span>
-                  <p className="today-quote-text">{currentHistoryEntry.narrative || currentHistoryEntry.significance || currentHistoryEntry.description}</p>
+                  <p className="today-quote-text">{currentHistoryEntry.narrative || currentHistoryEntry.description}</p>
                 </div>
+
+                {/* Classical Tamil Verse or Quoted Excerpt */}
+                {currentHistoryEntry.verse && (
+                  <div className="today-classical-verse-box">
+                    <div className="today-verse-badge">📜 TAMIL INSCRIPTION / ANNOTATION • தமிழ் மூலம்</div>
+                    <div className="today-verse-text">{currentHistoryEntry.verse}</div>
+                  </div>
+                )}
 
                 {/* Metadata Chips */}
                 <div className="today-meta-chips-row">
                   <div className="today-chip">
-                    <span>🏛️ Dynasty:</span>
+                    <span>🏛️ Dynasty / Era:</span>
                     <strong>{currentHistoryEntry.dynasty || 'Imperial Chola'}</strong>
                   </div>
                   <div className="today-chip">
-                    <span>📜 Source / Ruler:</span>
-                    <strong>{currentHistoryEntry.monarch || currentHistoryEntry.source || 'ASI Epigraphia'}</strong>
+                    <span>👑 Key Figure / Event:</span>
+                    <strong>{currentHistoryEntry.monarch || currentHistoryEntry.source || 'Historical Milestone'}</strong>
                   </div>
                   <div className="today-chip">
                     <span>📍 Geography:</span>
-                    <strong>{currentHistoryEntry.location || currentHistoryEntry.placeName || 'Thanjavur'}</strong>
+                    <strong>{currentHistoryEntry.location || currentHistoryEntry.placeName || 'Tamilakam'}</strong>
                   </div>
                 </div>
+
+                {/* Tags */}
+                {currentHistoryEntry.tags && currentHistoryEntry.tags.length > 0 && (
+                  <div className="today-tags-list">
+                    {currentHistoryEntry.tags.map(tag => (
+                      <span key={tag} className="today-tag-pill">#{tag}</span>
+                    ))}
+                  </div>
+                )}
+
+                {/* Evidence & Citation Note */}
+                {currentHistoryEntry.dateEvidence && (
+                  <div className="today-evidence-note">
+                    <strong>Archival Evidence: </strong>
+                    <span>{currentHistoryEntry.dateEvidence}</span>
+                  </div>
+                )}
 
                 {/* Jump to Map */}
                 {currentHistoryEntry.placeId && (
